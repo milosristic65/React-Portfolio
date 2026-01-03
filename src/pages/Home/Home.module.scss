@@ -18,10 +18,12 @@
 
     h1 {
       font-size: 4rem;
+      width: fit-content;
     }
 
     p {
       font-size: 1.5rem;
+      width: fit-content;
     }
   }
 
@@ -31,8 +33,6 @@
     right: 0;
     z-index: 1;
     height: calc(100%);
-    -webkit-user-drag: none;
-    pointer-events: none;
 
     .bannerHeroBackground {
       height: 100%;
@@ -44,7 +44,7 @@
         content: "";
         position: absolute;
         top: 0;
-        left: 30%;
+        left: 45%;
         right: 0;
         bottom: 0;
         background-color: $primary-color;
@@ -55,10 +55,8 @@
         position: relative;
         top: 35px;
         height: 100%;
-        pointer-events: none;
-        user-select: none;
-        -webkit-user-drag: none;
-        z-index: 1;
+        width: 700px;
+        z-index: 10;
 
         opacity: 0;
         animation: portraitSlideIn 0.8s ease forwards 0.5s;

@@ -4,10 +4,11 @@ import { motion } from "motion/react";
 import { addDays, intervalToDuration } from "date-fns";
 import { Link } from "react-router-dom";
 import slugify from "slugify";
+import ModelRenderer from "../../components/ModelRenderer/ModelRenderer";
 
 import { ROUTES } from "../../config/routes";
 
-import bannerImage from "../../assets/Banner/portrait.png";
+// import bannerImage from "../../assets/Banner/portrait.png";
 import reactLogo from "../../assets/TechStack/react.svg";
 import dotnetLogo from "../../assets/TechStack/dotnet.svg";
 import phpLogo from "../../assets/TechStack/php.svg";
@@ -95,11 +96,9 @@ const Home = () => {
           ref={bannerBackgroundRef}
         >
           <div className={`${styles.bannerHeroBackground}`}>
-            <img
-              src={bannerImage}
-              className={styles.bannerHero}
-              alt="Milos Ristic portrait"
-            />
+            <div className={styles.bannerHero}>
+              <ModelRenderer />
+            </div>
           </div>
         </div>
         <div ref={bannerLogosRef} className={styles.bannerLogos}>
