@@ -21,6 +21,10 @@
     animation: wobble 6s ease-in-out infinite;
     transition: filter 0.3s ease;
     filter: drop-shadow(2px 1px 10px rgba(0, 0, 0, 0.15));
+
+    @media (max-width: $tablet) {
+      animation: none;
+    }
   }
 
   &.atTop {
@@ -37,9 +41,11 @@
     font-weight: inherit;
     transition: background-color 0.3s ease, color 0.3s ease;
 
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-      color: inherit;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        color: inherit;
+      }
     }
 
     &.contactButton {
@@ -48,10 +54,12 @@
       transition: background-color 0.3s ease, color 0.3s ease,
         border-radius 0.3s ease, filter 0.3s ease, transform 0.3s ease;
 
-      &:hover {
-        transform: scale(1.05);
-        background-color: color.adjust($color: $text-color, $lightness: 5%);
-        filter: $div-shadow;
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          transform: scale(1.05);
+          background-color: color.adjust($color: $text-color, $lightness: 5%);
+          filter: $div-shadow;
+        }
       }
     }
   }

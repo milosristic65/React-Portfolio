@@ -85,7 +85,7 @@ const Projects = () => {
           <p>
             From experiments to <span className="highlight">client work</span>.
           </p>
-          <div className={`${styles.bannerHeroWrapper}`}>
+          <div className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}>
             <div className={`${styles.bannerHeroBackground}`}>
               <img
                 src={bannerImage}

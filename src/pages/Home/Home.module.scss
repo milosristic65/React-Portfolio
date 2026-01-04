@@ -17,12 +17,10 @@
     }
 
     h1 {
-      font-size: 4rem;
       width: fit-content;
     }
 
     p {
-      font-size: 1.5rem;
       width: fit-content;
     }
   }
@@ -79,6 +77,16 @@
       width: 250px;
       filter: grayscale(1) brightness(0) invert(1);
       opacity: 0.05;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    .bannerLogos {
+      left: calc(50% - 250px);
+
+      img {
+        width: 100px;
+      }
     }
   }
 }
@@ -225,8 +233,10 @@
     transition: background-color 0.3s ease, transform 0.3s ease,
       margin 0.2s ease-in 0.25s;
 
-    &:hover {
-      background-color: color.adjust($color: $text-color, $lightness: 15%);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: color.adjust($color: $text-color, $lightness: 15%);
+      }
     }
   }
 

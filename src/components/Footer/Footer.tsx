@@ -21,10 +21,12 @@ const Footer = () => {
           {contactFormPages.includes(pathname) && (
             <>
               {" "}
-              <h3 className={styles.branding}>
+              <h2 className={styles.branding}>
                 Got a Project in Mind?{" "}
-                <strong className="highlight">Let's Talk :)</strong>
-              </h3>
+                <strong className="highlight" style={{ whiteSpace: "nowrap" }}>
+                  Let's Talk :)
+                </strong>
+              </h2>
               <ContactForm className={styles.contactForm} />
             </>
           )}

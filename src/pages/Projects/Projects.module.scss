@@ -42,7 +42,6 @@
       opacity: 0;
       animation: bannerSlideIn 0.6s ease forwards;
 
-
       &::before {
         content: "";
         position: absolute;
@@ -130,6 +129,7 @@
 
 .filters {
   display: flex;
+  flex-direction: row;
   gap: 25px;
   align-items: center;
   padding-bottom: 30px;
@@ -155,6 +155,26 @@
 
     &:hover {
       background-color: color.adjust($color: $text-color, $lightness: 15%);
+    }
+  }
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    span {
+      font-size: 1.75rem;
+    }
+
+    .dropdowns {
+      flex-direction: column;
+      width: 100%;
+
+      & > * {
+        display: block;
+        width: 100%;
+        max-width: none;
+      }
     }
   }
 }

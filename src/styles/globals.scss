@@ -30,8 +30,10 @@ a {
   font-weight: bold;
   transition: color 0.3s ease;
 
-  &:hover {
-    color: color.adjust($color: $primary-color, $lightness: -20%);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: color.adjust($color: $primary-color, $lightness: -20%);
+    }
   }
 }
 
@@ -52,6 +54,24 @@ a {
     padding: 0 $content-padding;
     margin: 0 auto;
     height: 100%;
+
+    h1 {
+      font-size: 4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  .bannerHeroWrapper {
+    transition: opacity 0.3s ease;
+  }
+
+  @media (max-width: $tablet) {
+    .bannerHeroWrapper {
+      opacity: 0;
+    }
   }
 }
 
@@ -72,12 +92,18 @@ button,
   opacity: 1;
   transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.2s ease;
 
-  &:hover {
-    background-color: color.adjust($color: $primary-color, $lightness: -15%);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: color.adjust($color: $primary-color, $lightness: -15%);
+    }
   }
 
   &.hidden {
     opacity: 0;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
   }
 }
 

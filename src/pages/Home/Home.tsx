@@ -87,12 +87,12 @@ const Home = () => {
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Milos Ristic</h1>
           <p>
-            <span className="highlight">Full Stack Developer</span> (PHP • .NET
-            • React)
+            <span className="highlight">Full Stack Developer</span>{" "}
+            <span style={{ whiteSpace: "nowrap" }}>(PHP • .NET • React)</span>
           </p>
         </div>
         <div
-          className={`${styles.bannerHeroWrapper}`}
+          className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}
           ref={bannerBackgroundRef}
         >
           <div className={`${styles.bannerHeroBackground}`}>

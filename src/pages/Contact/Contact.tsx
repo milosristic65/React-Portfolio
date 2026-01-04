@@ -11,7 +11,7 @@ const Contact = () => {
           <p>
             Let's talk, <span className="highlight">send an email</span>.
           </p>
-          <div className={`${styles.bannerHeroWrapper}`}>
+          <div className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}>
             <div className={`${styles.bannerHeroBackground}`}>
               <img
                 src={bannerImage}
