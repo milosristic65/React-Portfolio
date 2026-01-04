@@ -38,9 +38,11 @@
     font-weight: bold;
     transition: transform 0.3s ease, filter 0.3s ease;
 
-    &:hover {
-      transform: scale(1.04);
-      filter: $div-shadow;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        transform: scale(1.04);
+        filter: $div-shadow;
+      }
     }
   }
 }

@@ -1,6 +1,10 @@
 @use "./variables" as *;
 @use "sass:color";
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   padding: 0;
   margin: 0;

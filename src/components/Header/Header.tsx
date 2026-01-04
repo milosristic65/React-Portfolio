@@ -1,6 +1,6 @@
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ROUTES } from "../../config/routes";
 
@@ -8,11 +8,13 @@ import logo from "/logo.svg";
 
 const Header = () => {
   const location = useLocation();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Header style on page top for pages with banner
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector(`.${styles.header}`);
-      const banner = document.querySelector(".banner"); // Check if banner is present
+      const banner = document.querySelector(".banner");
 
       if (header && banner) {
         const headerAtTop = header.classList.contains(styles.atTop);
@@ -23,16 +25,28 @@ const Header = () => {
           header.classList.remove(styles.atTop);
         }
       } else if (header && !banner) {
-        // Remove atTop class on pages without banner
         header.classList.remove(styles.atTop);
       }
     };
 
-    handleScroll(); // Initial check
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
+
+  // Disable body scroll when sidebar is open
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isSidebarOpen]);
 
   return (
     <header className={styles.header}>
@@ -40,7 +54,7 @@ const Header = () => {
         <Link to={ROUTES.HOME} className={`${styles.navLink} ${styles.logo}`}>
           <img src={logo} alt="logo" />
         </Link>
-        <nav className={styles.nav}>
+        <nav className={styles.desktopNav}>
           <Link to={ROUTES.HOME} className={styles.navLink}>
             Home
           </Link>
@@ -54,6 +68,37 @@ const Header = () => {
             Get in Contact
           </Link>
         </nav>
+        <div
+          className={`${styles.sidebarToggle} ${
+            isSidebarOpen ? styles.open : ""
+          }`}
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        ></div>
+        <div
+          className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ""}`}
+        >
+          <nav className={styles.mobileNav}>
+            <Link to={ROUTES.HOME} onClick={() => setIsSidebarOpen(false)}>
+              Home
+            </Link>
+            <Link to={ROUTES.PROJECTS} onClick={() => setIsSidebarOpen(false)}>
+              Projects
+            </Link>
+            <Link
+              to={ROUTES.CONTACT}
+              className={styles.contactButton}
+              onClick={() => setIsSidebarOpen(false)}
+            >
+              Get in Contact
+            </Link>
+          </nav>
+        </div>
+        <div
+          className={`${styles.sidebarOverlay} ${
+            isSidebarOpen ? styles.open : ""
+          }`}
+          onClick={() => setIsSidebarOpen(false)}
+        />
       </div>
     </header>
   );

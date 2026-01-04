@@ -118,8 +118,13 @@
       button {
         background-color: $text-color;
 
-        &:hover {
-          background-color: color.adjust($color: $text-color, $lightness: 15%);
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            background-color: color.adjust(
+              $color: $text-color,
+              $lightness: 15%
+            );
+          }
         }
       }
       input,
