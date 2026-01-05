@@ -46,6 +46,48 @@ const ModelRenderer = () => {
       });
   }, []);
 
+  useEffect(() => {
+    if (!canvasRef.current) return;
+    const canvas = canvasRef.current;
+    let isDragging = false;
+
+    function handleMouseMove(e: MouseEvent) {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (!isDragging) {
+        if (x > 140 && x < 550 && y > 150 && y < 600) {
+          document.body.style.cursor = "grab";
+        } else {
+          document.body.style.cursor = "default";
+        }
+      }
+    }
+
+    function handleMouseDown() {
+      if (!isDragging) {
+        document.body.style.cursor = "grabbing";
+        isDragging = true;
+      }
+    }
+
+    function handleMouseUp() {
+      if (isDragging) {
+        document.body.style.cursor = "grab";
+        isDragging = false;
+      }
+    }
+
+    document.body.addEventListener("mousemove", handleMouseMove);
+    document.body.addEventListener("mousedown", handleMouseDown);
+    document.body.addEventListener("mouseup", handleMouseUp);
+    return () => {
+      document.body.removeEventListener("mousemove", handleMouseMove);
+      document.body.removeEventListener("mousedown", handleMouseDown);
+      document.body.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, []);
+
   return <canvas ref={canvasRef} className={styles.canvasRenderer} />;
 };
 
