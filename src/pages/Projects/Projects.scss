@@ -1,0 +1,14 @@
+@use "../../styles/variables" as *;
+
+.filters {
+  .buttonLink {
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+
+      @media (max-width: $tablet) {
+        display: none;
+      }
+    }
+  }
+}

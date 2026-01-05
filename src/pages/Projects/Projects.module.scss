@@ -109,6 +109,7 @@
 
   @media (max-width: $tablet) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 
   @media (max-width: $mobile) {
@@ -155,6 +156,15 @@
 
     &:hover {
       background-color: color.adjust($color: $text-color, $lightness: 15%);
+    }
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+
+      @media (max-width: $tablet) {
+        display: none;
+      }
     }
   }
 

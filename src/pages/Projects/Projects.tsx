@@ -1,4 +1,5 @@
 import styles from "./Projects.module.scss";
+import "./Projects.scss";
 
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -99,7 +100,7 @@ const Projects = () => {
 
       <section className={styles.projectsSection}>
         <div className={`content ${styles.content}`}>
-          <div className={styles.filters}>
+          <div className={`filters ${styles.filters}`}>
             <span>Filter by:</span>
             <div className={styles.dropdowns}>
               <Dropdown
