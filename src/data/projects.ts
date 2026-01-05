@@ -1,6 +1,6 @@
-import easyKitchenThumb from "../assets/Projects/EasyKitchenLab/EasyKitchenLabThumbnail.png";
-import taglientThumb from "../assets/Projects/TaglientGames/TaglientGamesThumbnail.png";
-import fermicodingThumb from "../assets/Projects/Fermicoding/FermicodingThumbnail.png";
+import easyKitchenThumb from "../assets/Projects/EasyKitchenLab/EasyKitchenLabThumbnail.webp";
+import taglientThumb from "../assets/Projects/TaglientGames/TaglientGamesThumbnail.webp";
+import fermicodingThumb from "../assets/Projects/Fermicoding/FermicodingThumbnail.webp";
 
 export interface Project {
   title: string;

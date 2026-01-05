@@ -1,14 +1,11 @@
 import styles from "./Home.module.scss";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
-import { addDays, intervalToDuration } from "date-fns";
 import { Link } from "react-router-dom";
-import slugify from "slugify";
 import ModelRenderer from "../../components/ModelRenderer/ModelRenderer";
 
 import { ROUTES } from "../../config/routes";
 
-// import bannerImage from "../../assets/Banner/portrait.png";
 import reactLogo from "../../assets/TechStack/react.svg";
 import dotnetLogo from "../../assets/TechStack/dotnet.svg";
 import phpLogo from "../../assets/TechStack/php.svg";
@@ -16,6 +13,7 @@ import drupalLogo from "../../assets/TechStack/drupal.svg";
 
 import TechCard from "../../components/TechCard/TechCard";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import ExperienceCard from "../../components/ExperienceCard/ExperienceCard";
 import { useParallax } from "../../hooks/useParallax";
 import { useInViewAnimation } from "../../hooks/useInViewAnimation";
 
@@ -60,26 +58,6 @@ const Home = () => {
       );
     });
   }, [showAllExperiences]);
-
-  const calculateDuration = (start: Date, end?: Date | null) => {
-    start = addDays(start, -1);
-    const duration = intervalToDuration({ start, end: end || new Date() });
-    const years: number = duration.years ?? 0;
-    const months: number = duration.months ?? 0;
-    const days: number = duration.days ?? 0;
-
-    const parts = [];
-    if (years) {
-      parts.push(`${years} year${years > 1 ? "s" : ""}`);
-      if (months > 0) parts.push(`${months} month${months! > 1 ? "s" : ""}`);
-    } else if (months) {
-      parts.push(`${months} month${months > 1 ? "s" : ""}`);
-    } else {
-      parts.push(`${days} day${days! > 1 ? "s" : ""}`);
-    }
-
-    return parts.join(", ");
-  };
 
   return (
     <div className={styles.home}>
@@ -177,58 +155,14 @@ const Home = () => {
             {/* Initial list */}
             {experiences
               .slice(0, experienceInitialCount)
-              .map((experiences, index) => (
+              .map((experience, index) => (
                 <div
-                  key={experiences.company}
+                  key={experience.company}
                   className={`${styles.experienceCard} ${
                     index === 0 ? styles.lastExperience : ""
                   }`}
                 >
-                  <h3>{experiences.company}</h3>
-                  <h4 className="highlight">{experiences.position}</h4>
-                  <p>{experiences.description}</p>
-                  <p>
-                    <strong>Duration:</strong>{" "}
-                    {experiences.duration.start.toLocaleDateString("en-US", {
-                      month: "long",
-                      year: "numeric",
-                    })}{" "}
-                    -{" "}
-                    {experiences.duration.end
-                      ? experiences.duration.end.toLocaleDateString("en-US", {
-                          month: "long",
-                          year: "numeric",
-                        })
-                      : "Present"}{" "}
-                    <span className="highlight">
-                      (
-                      {calculateDuration(
-                        experiences.duration.start,
-                        experiences.duration.end
-                      )}
-                      )
-                    </span>
-                  </p>
-                  {experiences.relatedProjects &&
-                    experiences.relatedProjects.length > 0 && (
-                      <p>
-                        <strong>Related projects:</strong>{" "}
-                        {experiences.relatedProjects.map((project, index) => (
-                          <span key={project}>
-                            <a
-                              href={`${ROUTES.PROJECTS}/${slugify(project, {
-                                lower: true,
-                              })}`}
-                            >
-                              {project}
-                            </a>
-                            {index < experiences.relatedProjects!.length - 1
-                              ? ", "
-                              : ""}
-                          </span>
-                        ))}
-                      </p>
-                    )}
+                  <ExperienceCard {...experience} />
                 </div>
               ))}
             {/* Revealed list */}
@@ -248,67 +182,21 @@ const Home = () => {
                 pointerEvents: showAllExperiences ? "auto" : "none",
               }}
             >
-              {experiences
-                .slice(experienceInitialCount)
-                .map((experiences, index) => (
-                  <motion.div
-                    key={experiences.company}
-                    className={styles.experienceCard}
-                    initial={{ y: 20 }}
-                    animate={{ y: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: index * 0.1,
-                      ease: "easeOut",
-                    }}
-                  >
-                    <h3>{experiences.company}</h3>
-                    <h4 className="highlight">{experiences.position}</h4>
-                    <p>{experiences.description}</p>
-                    <p>
-                      <strong>Duration:</strong>{" "}
-                      {experiences.duration.start.toLocaleDateString("en-US", {
-                        month: "long",
-                        year: "numeric",
-                      })}{" "}
-                      -{" "}
-                      {experiences.duration.end
-                        ? experiences.duration.end.toLocaleDateString("en-US", {
-                            month: "long",
-                            year: "numeric",
-                          })
-                        : "Present"}{" "}
-                      <span className="highlight">
-                        (
-                        {calculateDuration(
-                          experiences.duration.start,
-                          experiences.duration.end
-                        )}
-                        )
-                      </span>
-                    </p>
-                    {experiences.relatedProjects &&
-                      experiences.relatedProjects.length > 0 && (
-                        <p>
-                          <strong>Related projects:</strong>{" "}
-                          {experiences.relatedProjects.map((project, index) => (
-                            <span key={project}>
-                              <a
-                                href={`${ROUTES.PROJECTS}/${slugify(project, {
-                                  lower: true,
-                                })}`}
-                              >
-                                {project}
-                              </a>
-                              {index < experiences.relatedProjects!.length - 1
-                                ? ", "
-                                : ""}
-                            </span>
-                          ))}
-                        </p>
-                      )}
-                  </motion.div>
-                ))}
+              {experiences.slice(experienceInitialCount).map((experience, index) => (
+                <motion.div
+                  key={experience.company}
+                  className={styles.experienceCard}
+                  initial={{ y: 20 }}
+                  animate={{ y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.1,
+                    ease: "easeOut",
+                  }}
+                >
+                  <ExperienceCard {...experience} />
+                </motion.div>
+              ))}
             </motion.div>
           </div>
           {/* Show More button */}
