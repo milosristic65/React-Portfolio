@@ -182,21 +182,23 @@ const Home = () => {
                 pointerEvents: showAllExperiences ? "auto" : "none",
               }}
             >
-              {experiences.slice(experienceInitialCount).map((experience, index) => (
-                <motion.div
-                  key={experience.company}
-                  className={styles.experienceCard}
-                  initial={{ y: 20 }}
-                  animate={{ y: 0 }}
-                  transition={{
-                    duration: 0.4,
-                    delay: index * 0.1,
-                    ease: "easeOut",
-                  }}
-                >
-                  <ExperienceCard {...experience} />
-                </motion.div>
-              ))}
+              {experiences
+                .slice(experienceInitialCount)
+                .map((experience, index) => (
+                  <motion.div
+                    key={experience.company}
+                    className={styles.experienceCard}
+                    initial={{ y: 20 }}
+                    animate={{ y: 0 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: index * 0.1,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <ExperienceCard {...experience} />
+                  </motion.div>
+                ))}
             </motion.div>
           </div>
           {/* Show More button */}
