@@ -58,22 +58,24 @@ $projectTitleFontSize: 22px;
     }
   }
 
-  &:hover {
-    transform: scale(1.02);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.02);
 
-    a {
-      color: inherit;
-    }
-
-    .projectInfo {
-      transform: translateY(0);
-
-      p {
-        opacity: 1;
+      a {
+        color: inherit;
       }
 
-      &::before {
-        background-color: rgba($primary-color, 1);
+      .projectInfo {
+        transform: translateY(0);
+
+        p {
+          opacity: 1;
+        }
+
+        &::before {
+          background-color: rgba($primary-color, 1);
+        }
       }
     }
   }
