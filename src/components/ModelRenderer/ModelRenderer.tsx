@@ -4,7 +4,7 @@ import {
   WireframeRenderer,
   DIRECTION,
   PROJECTION,
-} from "../../lib/WireframeRenderer/WireFrameRenderer";
+} from "../../lib/WireframeRenderer/WireframeRenderer";
 
 const ModelRenderer = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
