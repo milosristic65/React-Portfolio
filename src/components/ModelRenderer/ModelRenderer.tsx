@@ -6,8 +6,17 @@ import {
   PROJECTION,
 } from "../../lib/WireframeRenderer/WireframeRenderer";
 
+interface NavigatorWithDeviceMemory extends Navigator {
+  deviceMemory?: number;
+}
+
 const ModelRenderer = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  const deviceMemory = (navigator as NavigatorWithDeviceMemory).deviceMemory;
+  const isLowMemory = deviceMemory && deviceMemory < 4;
+  const isWeakDevice = isMobile || isLowMemory;
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -15,8 +24,8 @@ const ModelRenderer = () => {
     const viewer = new WireframeRenderer(canvasRef.current, {
       coordinates: { x: 0, y: 0, z: 2 },
       projection: PROJECTION.PERSPECTIVE,
-      draggable: true,
-      autoRotate: true,
+      draggable: !isWeakDevice,
+      autoRotate: !isWeakDevice,
       lineWidth: 2,
       faceOpacity: 0.4,
       renderVertices: true,
@@ -44,10 +53,10 @@ const ModelRenderer = () => {
         viewer.setRotation(-0.25, 0.2);
         viewer.start();
       });
-  }, []);
+  }, [isWeakDevice]);
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!canvasRef.current || isWeakDevice) return;
     const canvas = canvasRef.current;
     let isDragging = false;
 
@@ -86,7 +95,7 @@ const ModelRenderer = () => {
       document.body.removeEventListener("mousedown", handleMouseDown);
       document.body.removeEventListener("mouseup", handleMouseUp);
     };
-  }, []);
+  }, [isWeakDevice]);
 
   return <canvas ref={canvasRef} className={styles.canvasRenderer} />;
 };

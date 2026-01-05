@@ -415,6 +415,15 @@ export class WireframeRenderer {
     }
 
     requestAnimationFrame(() => this._frame());
+
+    // Just draw the first frame if the model is not interactive
+    if (this._hasDrawnFirstFrame) {
+      if (!this.autoRotate || !this.draggable) {
+        return;
+      }
+    } else {
+      this._hasDrawnFirstFrame = true;
+    }
   }
 
   _drawLine(point1, point2) {
