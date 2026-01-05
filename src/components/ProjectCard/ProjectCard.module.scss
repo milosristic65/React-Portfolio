@@ -51,8 +51,7 @@ $projectTitleFontSize: 22px;
       position: absolute;
       inset: -10px;
       top: -5px;
-      background-color: rgba($primary-color, 0.4);
-      backdrop-filter: blur(10px);
+      background-color: rgba($primary-color, 0.9);
       transform: rotate(-2deg);
       transition: background-color 0.3s ease;
     }
