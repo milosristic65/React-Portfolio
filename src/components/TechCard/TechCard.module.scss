@@ -8,8 +8,10 @@ $cardTransiton: 0.3s;
   background-color: #f9f9f9;
   border-radius: $input-radius;
   text-align: left;
-  width: $tech-card-size;
-  height: $tech-card-size;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  height: auto;
   overflow: hidden;
   background-color: $accent-color;
   box-shadow: 0 2px 8px rgba(13, 2, 73, 0.2);
@@ -108,10 +110,5 @@ $cardTransiton: 0.3s;
         }
       }
     }
-  }
-
-  @media (max-width: $mobile) {
-    width: 100px;
-    height: 100px;
   }
 }

@@ -137,16 +137,21 @@
     background-color: $primary-color;
     border-radius: $input-radius;
   }
-}
 
-.techStackGrid {
-  margin-top: 15px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax($tech-card-size, 1fr));
-  gap: 3rem;
+  .techStackGrid {
+    margin-top: 15px;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(5, 1fr);
 
-  @media (max-width: $mobile) {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    @media (max-width: $tablet) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: $mobile) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 
