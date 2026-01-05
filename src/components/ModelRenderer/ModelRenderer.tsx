@@ -29,23 +29,21 @@ const ModelRenderer = () => {
       foreground: "#e1e0e0ff",
     });
 
-    return () => {
-      const models = [
-        "/models/icosphere.obj",
-        "/models/cutout_cube.obj",
-        "/models/tetrahedron.obj",
-      ];
+    const models = [
+      "/models/icosphere.obj",
+      "/models/cutout_cube.obj",
+      "/models/tetrahedron.obj",
+    ];
 
-      fetch(models[Math.floor(Math.random() * models.length)])
-        .then((res) => res.text())
-        .then((text) => {
-          const mesh = WireframeRenderer.parseOBJ(text);
-          const vertices = mesh.vertices;
-          viewer.setModel(vertices, mesh.faces);
-          viewer.setRotation(-0.25, 0.2);
-          viewer.start();
-        });
-    };
+    fetch(models[Math.floor(Math.random() * models.length)])
+      .then((res) => res.text())
+      .then((text) => {
+        const mesh = WireframeRenderer.parseOBJ(text);
+        const vertices = mesh.vertices;
+        viewer.setModel(vertices, mesh.faces);
+        viewer.setRotation(-0.25, 0.2);
+        viewer.start();
+      });
   }, []);
 
   return <canvas ref={canvasRef} className={styles.canvasRenderer} />;
