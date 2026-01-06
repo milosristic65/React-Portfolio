@@ -58,10 +58,10 @@ const ModelRenderer = () => {
   useEffect(() => {
     if (!canvasRef.current || isWeakDevice) return;
     const canvas = canvasRef.current;
+    const rect = canvas.getBoundingClientRect();
     let isDragging = false;
 
     function handleMouseMove(e: MouseEvent) {
-      const rect = canvas.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       if (!isDragging) {
@@ -73,10 +73,16 @@ const ModelRenderer = () => {
       }
     }
 
-    function handleMouseDown() {
+    function handleMouseDown(e: MouseEvent) {
       if (!isDragging) {
-        document.body.style.cursor = "grabbing";
-        isDragging = true;
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        if (!isDragging) {
+          if (x > 140 && x < 550 && y > 150 && y < 600) {
+            document.body.style.cursor = "grabbing";
+            isDragging = true;
+          }
+        }
       }
     }
 
