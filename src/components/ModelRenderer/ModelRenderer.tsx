@@ -115,6 +115,7 @@ const ModelRenderer = () => {
     }
 
     document.body.addEventListener("mousemove", handleMouseMove);
+    document.body.addEventListener("wheel", handleMouseMove);
     document.body.addEventListener("mousedown", handleMouseDown);
     document.body.addEventListener("mouseup", handleMouseUp);
     return () => {
