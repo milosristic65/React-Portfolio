@@ -94,6 +94,7 @@ const ModelRenderer = () => {
       document.body.removeEventListener("mousemove", handleMouseMove);
       document.body.removeEventListener("mousedown", handleMouseDown);
       document.body.removeEventListener("mouseup", handleMouseUp);
+      document.body.style.cursor = "auto";
     };
   }, [isWeakDevice]);
 
