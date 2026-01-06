@@ -1,5 +1,5 @@
 import styles from "./ProjectDetails.module.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useParallax } from "../../hooks/useParallax";
 import slugify from "slugify";
