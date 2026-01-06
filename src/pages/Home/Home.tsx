@@ -66,7 +66,7 @@ const Home = () => {
           <h1>Milos Ristic</h1>
           <p>
             <span className="highlight">Full Stack Developer</span>{" "}
-            <span style={{ whiteSpace: "nowrap" }}>(PHP • .NET • React)</span>
+            <span style={{ whiteSpace: "nowrap" }}>(PHP • React)</span>
           </p>
         </div>
         <div

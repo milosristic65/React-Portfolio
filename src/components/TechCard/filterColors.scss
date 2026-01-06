@@ -7,10 +7,8 @@
     hue-rotate(237deg) brightness(101%) contrast(122%);
 }
 .red {
-  img {
-    filter: brightness(0) saturate(100%) invert(27%) sepia(83%) saturate(7483%)
-      hue-rotate(357deg) brightness(102%) contrast(107%);
-  }
+  filter: brightness(0) saturate(100%) invert(27%) sepia(83%) saturate(7483%)
+    hue-rotate(357deg) brightness(102%) contrast(107%);
 }
 .green {
   filter: brightness(0) saturate(100%) invert(48%) sepia(72%) saturate(3293%)
@@ -23,4 +21,7 @@
 .orange {
   filter: brightness(0) saturate(100%) invert(52%) sepia(83%) saturate(4946%)
     hue-rotate(11deg) brightness(101%) contrast(101%);
+}
+.black {
+  filter: brightness(0) saturate(100%);
 }
