@@ -11,14 +11,14 @@ const Contact = () => {
           <p>
             Let's talk, <span className="highlight">send an email</span>.
           </p>
-          <div className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}>
-            <div className={`${styles.bannerHeroBackground}`}>
-              <img
-                src={bannerImage}
-                className={styles.bannerHero}
-                alt="Projects Hero"
-              />
-            </div>
+        </div>
+        <div className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}>
+          <div className={`${styles.bannerHeroBackground}`}>
+            <img
+              src={bannerImage}
+              className={styles.bannerHero}
+              alt="Projects Hero"
+            />
           </div>
         </div>
       </div>

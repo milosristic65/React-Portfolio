@@ -38,13 +38,14 @@ const fermicodingScreenshots = getScreenshots(fermicodingImages);
 
 export interface Project {
   title: string;
-  description: string;
   snippet: string;
+  challenge: string;
+  solution: string;
   thumbnail: string;
   screenshots: string[];
   technologies: string[];
   industries: string[];
-  projectUrl: string;
+  projectUrl: string | null;
   githubUrl: string | null;
   featured: boolean | false;
 }
@@ -52,9 +53,10 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Easy Kitchen Lab",
-    description:
-      "Full-stack e-commerce solution. Features user authentication, shopping cart, and payment integration.",
     snippet: "E-commerce platform for kitchen appliances.",
+    challenge:
+      "Full-stack e-commerce solution. Features user authentication, shopping cart, and payment integration.",
+    solution: "Placeholder solution.",
     thumbnail: easyKitchenThumbnail,
     screenshots: easyKitchenLabScreenshots,
     technologies: ["drupal", "php", "jquery", "mysql"],
@@ -65,8 +67,9 @@ export const projects: Project[] = [
   },
   {
     title: "Fermicoding",
-    description: "Full-stack website for coding tutorials and resources.",
     snippet: "Fermicoding official website.",
+    challenge: "Full-stack website for coding tutorials and resources.",
+    solution: "Placeholder solution.",
     thumbnail: fermicodingThumbnail,
     screenshots: fermicodingScreenshots,
     technologies: ["drupal", "php", "jquery", "mysql"],
@@ -77,9 +80,10 @@ export const projects: Project[] = [
   },
   {
     title: "Taglient Games",
-    description:
-      "Official website for Taglient Games, featuring game listings and company information.",
     snippet: "Taglient Games official website.",
+    challenge:
+      "Official website for Taglient Games, featuring game listings and company information.",
+    solution: "Placeholder solution.",
     thumbnail: taglientGamesThumbnail,
     screenshots: taglientGamesScreenshots,
     technologies: ["react", "nodejs", "expressjs"],

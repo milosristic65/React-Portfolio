@@ -1,0 +1,36 @@
+@use "../../styles/variables" as *;
+@use "sass:color";
+
+.swiper {
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: $primary-color;
+  }
+
+  .swiper-pagination-bullet {
+    background: $background-color;
+    border-radius: $input-radius;
+  }
+  .swiper-pagination-bullet-active {
+    background: $primary-color;
+  }
+}
+
+.custom-swiper-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+
+  .swiper-pagination-bullet {
+    background: $text-color;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 4px;
+    opacity: 0.2;
+    &.swiper-pagination-bullet-active {
+      background: $primary-color;
+      opacity: 1;
+    }
+  }
+}
