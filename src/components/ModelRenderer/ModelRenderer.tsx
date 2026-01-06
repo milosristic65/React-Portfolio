@@ -58,14 +58,27 @@ const ModelRenderer = () => {
   useEffect(() => {
     if (!canvasRef.current || isWeakDevice) return;
     const canvas = canvasRef.current;
-    const rect = canvas.getBoundingClientRect();
     let isDragging = false;
 
+    const region = {
+      x1: 0.1,
+      x2: 0.9,
+      y1: 0.1,
+      y2: 0.8,
+    };
+
     function handleMouseMove(e: MouseEvent) {
+      const rect = canvas.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+      const inRegion =
+        x > rect.width * region.x1 &&
+        x < rect.width * region.x2 &&
+        y > rect.height * region.y1 &&
+        y < rect.height * region.y2;
+
       if (!isDragging) {
-        if (x > 140 && x < 550 && y > 150 && y < 600) {
+        if (inRegion) {
           document.body.style.cursor = "grab";
         } else {
           document.body.style.cursor = "default";
@@ -74,11 +87,19 @@ const ModelRenderer = () => {
     }
 
     function handleMouseDown(e: MouseEvent) {
+      const rect = canvas.getBoundingClientRect();
+
       if (!isDragging) {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
+        const inRegion =
+          x > rect.width * region.x1 &&
+          x < rect.width * region.x2 &&
+          y > rect.height * region.y1 &&
+          y < rect.height * region.y2;
+
         if (!isDragging) {
-          if (x > 140 && x < 550 && y > 150 && y < 600) {
+          if (inRegion) {
             document.body.style.cursor = "grabbing";
             isDragging = true;
           }
