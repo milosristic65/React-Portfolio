@@ -44,6 +44,8 @@ export const ContactForm = ({ className }: ContactFormProps) => {
         setEmail("");
         setMessage("");
         console.log("Message sent successfully");
+        // Reset status
+        setTimeout(() => setStatus("idle"), 5000);
       } else {
         setStatus("error");
         console.error("Error sending message:", response.statusText);
