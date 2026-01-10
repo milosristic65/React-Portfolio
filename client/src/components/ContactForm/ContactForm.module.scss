@@ -32,7 +32,8 @@
 
   button {
     border-radius: $input-radius;
-    width: 100px;
+    padding-left: 25px;
+    padding-right: 25px;
     line-height: 25px;
     align-self: flex-end;
     font-weight: bold;
@@ -43,6 +44,18 @@
         transform: scale(1.04);
         filter: $div-shadow;
       }
+    }
+  }
+
+  .statusMessage {
+    font-weight: bold;
+    
+    p {
+      margin: 0;
+    }
+
+    .error {
+      color: $error-color;
     }
   }
 }
