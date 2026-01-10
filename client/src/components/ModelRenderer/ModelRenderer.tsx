@@ -81,7 +81,7 @@ const ModelRenderer = () => {
         if (inRegion) {
           document.body.style.cursor = "grab";
         } else {
-          document.body.style.cursor = "default";
+          document.body.style.cursor = "auto";
         }
       }
     }
