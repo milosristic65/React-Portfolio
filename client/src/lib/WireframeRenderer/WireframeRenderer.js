@@ -291,7 +291,7 @@ export class WireframeRenderer {
   }
 
   _frame() {
-    const deltaTime = 0.1 / this.FPS;
+    const deltaTime = 0.04 / this.FPS;
     const center = this._getCenter(this.vertices);
     this._clearCanvas();
 
