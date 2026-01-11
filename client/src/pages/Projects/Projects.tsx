@@ -121,11 +121,6 @@ const Projects = () => {
         : project.industries.includes(industryValue?.value ?? ""))
   );
 
-  // Loading
-  if (filteredProjects.length == 0) {
-    return <></>;
-  }
-
   return (
     <div className={styles.projects}>
       <div className={`banner ${styles.banner}`}>
@@ -186,7 +181,9 @@ const Projects = () => {
               ))}
             </div>
           ) : (
-            <p>No projects match the selected filters.</p>
+            projects.length > 0 && (
+              <p>No projects match the selected filters.</p>
+            )
           )}
         </div>
       </section>

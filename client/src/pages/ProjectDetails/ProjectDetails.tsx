@@ -68,12 +68,7 @@ const ProjectDetails = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState<string | null>(null);
 
-  // Loading
-  if (projects.length == 0) {
-    return <></>;
-  }
-
-  if (!currentProject) {
+  if (!currentProject && projects.length > 0) {
     return <NotFound />;
   }
 
