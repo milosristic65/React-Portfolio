@@ -1,14 +1,19 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const nodeMailer = require("nodemailer");
-const rateLimit = require("express-rate-limit");
-const app = express();
+import { Router } from "express";
+import nodeMailer from "nodemailer";
+import rateLimit from "express-rate-limit";
 
 const email = process.env.EMAIL;
 const password = process.env.PASSWORD;
 
-async function contact(user_name, user_email, user_message) {
+const router = Router();
+
+interface contactProps {
+  user_name: string;
+  user_email: string;
+  user_message: string;
+}
+
+async function contact({ user_name, user_email, user_message }: contactProps) {
   // Create the message
   const message = `
   <h3>Contact Info</h3>
@@ -45,32 +50,15 @@ const contactLimiter = rateLimit({
   message: "Too many requests, please try again later.",
 });
 
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-  })
-);
-app.use(express.json()); // Middleware to parse JSON bodies
-
-app.post("/api/contact", contactLimiter, async (req, res) => {
-  // Handle preflight requests
-  if (req.method === "OPTIONS") {
-    return res.status(200).end(); // End preflight request here
-  }
-
-  // Handle the post request
+router.post("/", contactLimiter, async (req, res) => {
   const { user_name, user_email, user_message } = req.body;
   try {
-    await contact(user_name, user_email, user_message);
+    await contact({ user_name, user_email, user_message });
     res.status(200).send("Message sent successfully");
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).send("Failed to send message");
     console.log(error.message);
   }
 });
 
-// Listen for calls
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
-});
+export default router;
