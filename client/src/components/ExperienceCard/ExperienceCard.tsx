@@ -1,6 +1,7 @@
 import { addDays, intervalToDuration } from "date-fns";
 import slugify from "slugify";
 import { ROUTES } from "../../config/routes";
+import { Link } from "react-router";
 
 interface ExperienceCardProps {
   company: string;
@@ -66,11 +67,11 @@ const ExperienceCard = ({
           <strong>Related projects:</strong>{" "}
           {relatedProjects.map((project, index) => (
             <span key={project}>
-              <a
-                href={`${ROUTES.PROJECTS}/${slugify(project, { lower: true })}`}
+              <Link
+                to={`${ROUTES.PROJECTS}/${slugify(project, { lower: true })}`}
               >
                 {project}
-              </a>
+              </Link>
               {index < relatedProjects.length - 1 ? ", " : ""}
             </span>
           ))}
