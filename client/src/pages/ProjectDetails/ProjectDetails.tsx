@@ -92,11 +92,11 @@ const ProjectDetails = () => {
       </div>
 
       <section className={styles.projectInfoSection}>
-        <div className={`content ${styles.content}`}>
+        <div className={`content ${styles.content} ${styles.challengeSection}`}>
           <h2>The Challenge</h2>
           <p>{currentProject?.challenge}</p>
         </div>
-        <div className={`content ${styles.content}`}>
+        <div className={`content ${styles.content} ${styles.solutionSection}`}>
           <h2>The Solution</h2>
           <p>{currentProject?.solution}</p>
         </div>

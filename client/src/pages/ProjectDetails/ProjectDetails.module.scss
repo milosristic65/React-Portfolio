@@ -21,17 +21,28 @@
 
   .bannerHeroWrapper {
     position: absolute;
-    top: -25%;
+    top: 0;
     right: 0;
     z-index: 1;
     width: 100%;
-    -webkit-user-drag: none;
+    height: 100%;
     pointer-events: none;
 
     .bannerHero {
-      opacity: 0.1;
+      position: absolute;
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 0% 15%;
+      opacity: 0.1;
+      z-index: 0;
       animation: bannerSlideIn 0.6s ease forwards;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    .bannerHeroWrapper {
+      opacity: 1;
     }
   }
 }
@@ -42,7 +53,7 @@
     transform: translateY(100px);
   }
   to {
-    opacity: 0.125;
+    opacity: 0.1;
     transform: translateY(0);
   }
 }
@@ -55,6 +66,26 @@
   margin-top: 20px;
   p {
     font-size: $bigger-normal-text;
+  }
+}
+
+.challengeSection {
+  h2 {
+    display: inline-block;
+    padding: 5px;
+    color: $background-color;
+    background-color: $text-color;
+    border-radius: $input-radius;
+  }
+}
+
+.solutionSection {
+  h2 {
+    display: inline-block;
+    padding: 5px;
+    color: $background-color;
+    background-color: $primary-color;
+    border-radius: $input-radius;
   }
 }
 
