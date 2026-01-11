@@ -237,7 +237,7 @@ const ProjectDetails = () => {
           <div className={styles.techStackGrid}>
             {technologiesWithProjectCount
               .filter((tech) =>
-                currentProject.technologies?.includes(tech.value)
+                currentProject?.technologies.includes(tech.value)
               )
               .map((tech) => (
                 <TechCard
