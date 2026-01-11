@@ -1,13 +1,13 @@
 import styles from "./ProjectDetails.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useParallax } from "../../hooks/useParallax";
 import slugify from "slugify";
 import TechCard from "../../components/TechCard/TechCard";
 import NotFound from "../NotFound/NotFound";
 
-import { projects } from "../../data/projects";
-import { technologies } from "../../data/technologies";
+import { type Project } from "../../types/project";
+import { type Technology } from "../../types/technology";
 
 import Modal from "react-modal";
 Modal.setAppElement("#root");
@@ -21,9 +21,32 @@ import "swiper/css/pagination";
 import "./CustomSwiperStyle.scss";
 
 const ProjectDetails = () => {
+  const apiUrl = import.meta.env.VITE_API_URL || "";
   const { projectSlug } = useParams();
+
+  const [projects, setProjects] = useState<Project[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/projects.json`)
+      .then((res) => res.json())
+      .then((data: Project[]) => {
+        setProjects(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch projects:", error);
+      });
+  }, [apiUrl]);
+
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/technologies.json`)
+      .then((res) => res.json())
+      .then((data: Technology[]) => {
+        setTechnologies(data);
+      });
+  }, [apiUrl]);
+
   const currentProject = projects.find(
-    (p) => slugify(p.title, { lower: true }) === projectSlug
+    (project) => slugify(project.title, { lower: true }) === projectSlug
   );
 
   // Banner //
@@ -45,6 +68,11 @@ const ProjectDetails = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState<string | null>(null);
 
+  // Loading
+  if (projects.length == 0) {
+    return <></>;
+  }
+
   if (!currentProject) {
     return <NotFound />;
   }
@@ -61,7 +89,7 @@ const ProjectDetails = () => {
           className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}
         >
           <img
-            src={currentProject?.screenshots[0]}
+            src={`${apiUrl}/api/assets/${currentProject?.screenshots[0]}`}
             className={styles.bannerHero}
             alt="Projects Hero"
           />
@@ -99,10 +127,10 @@ const ProjectDetails = () => {
             {currentProject?.screenshots.map((screenshot, index) => (
               <SwiperSlide key={index}>
                 <img
-                  src={screenshot}
+                  src={`${apiUrl}/api/assets/${screenshot}`}
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    setModalImg(screenshot);
+                    setModalImg(`${apiUrl}/api/assets/${screenshot}`);
                     setModalOpen(true);
                   }}
                 />
@@ -222,7 +250,7 @@ const ProjectDetails = () => {
                   title={tech.name}
                   value={tech.value}
                   projectCount={tech.projectCount}
-                  logo={tech.icon!}
+                  logo={`${apiUrl}/api/assets/${tech.icon}`}
                   color={tech.color}
                 />
               ))}

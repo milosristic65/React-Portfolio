@@ -1,0 +1,58 @@
+[
+  {
+    "name": "PHP",
+    "value": "php",
+    "icon": "tech-stack/php.svg",
+    "color": "blue"
+  },
+  {
+    "name": "Drupal",
+    "value": "drupal",
+    "icon": "tech-stack/drupal.svg",
+    "color": "cyan"
+  },
+  {
+    "name": "React",
+    "value": "react",
+    "icon": "tech-stack/react.svg",
+    "color": "cyan"
+  },
+  {
+    "name": "Next.js",
+    "value": "nextjs",
+    "icon": "tech-stack/nextjs.svg",
+    "color": "black"
+  },
+  {
+    "name": "jQuery",
+    "value": "jquery",
+    "icon": "tech-stack/jquery.svg",
+    "color": "blue"
+  },
+  {
+    "name": "Node.js",
+    "value": "nodejs",
+    "icon": "tech-stack/nodejs.svg"
+  },
+  {
+    "name": "Express.js",
+    "value": "expressjs",
+    "icon": "tech-stack/expressjs.svg"
+  },
+  {
+    "name": ".NET",
+    "value": "dotnet",
+    "icon": "tech-stack/dotnet.svg",
+    "color": "purple"
+  },
+  {
+    "name": "MySQL",
+    "value": "mysql",
+    "icon": "tech-stack/mysql.svg"
+  },
+  {
+    "name": "Microsoft SQL Server",
+    "value": "mssql",
+    "icon": "tech-stack/mssql.svg"
+  }
+]

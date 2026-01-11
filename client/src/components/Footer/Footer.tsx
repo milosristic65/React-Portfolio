@@ -1,15 +1,30 @@
 import styles from "./Footer.module.scss";
+import { useEffect, useState } from "react";
 import { useInViewAnimation } from "../../hooks/useInViewAnimation";
-import { socials } from "../../data/socials";
+import { type Social } from "../../types/social";
 import { ROUTES } from "../../config/routes";
 import { useLocation } from "react-router-dom";
 
 import ContactForm from "../ContactForm/ContactForm";
 
 const Footer = () => {
+  const apiUrl = import.meta.env.VITE_API_URL || "";
+
   const footerRef = useInViewAnimation(styles.visible, 0.3);
   const { pathname } = useLocation();
   const contactFormPages = [ROUTES.HOME];
+
+  const [socials, setSocials] = useState<Social[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/socials.json`)
+      .then((res) => res.json())
+      .then((data: Social[]) => {
+        setSocials(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch projects:", error);
+      });
+  }, [apiUrl]);
 
   return (
     <footer ref={footerRef}>
@@ -35,7 +50,10 @@ const Footer = () => {
             {socials.map((social) => (
               <li key={social.name}>
                 <a href={social.url} target="_blank" rel="noopener noreferrer">
-                  <img src={social.icon ?? ""} alt={social.name} />
+                  <img
+                    src={`${apiUrl}/api/assets/${social.icon ?? ""}`}
+                    alt={social.name}
+                  />
                   {social.name}
                 </a>
               </li>

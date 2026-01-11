@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Easy Kitchen Lab",
+    "snippet": "E-commerce platform for kitchen appliances.",
+    "challenge": "Full-stack e-commerce solution. Features user authentication, shopping cart, and payment integration.",
+    "solution": "Placeholder solution.",
+    "thumbnail": "projects/easykitchenlab/thumbnail.webp",
+    "screenshots": ["projects/easykitchenlab/screenshot_1.webp"],
+    "technologies": ["drupal", "php", "jquery", "mysql"],
+    "industries": ["ecommerce"],
+    "projectUrl": "https://www.easykitchenlab.com",
+    "githubUrl": null,
+    "featured": true
+  },
+  {
+    "title": "Fermicoding",
+    "snippet": "Fermicoding official website.",
+    "challenge": "Full-stack website for coding tutorials and resources.",
+    "solution": "Placeholder solution.",
+    "thumbnail": "projects/fermicoding/thumbnail.webp",
+    "screenshots": ["projects/fermicoding/screenshot_1.webp"],
+    "technologies": ["drupal", "php", "jquery", "mysql"],
+    "industries": ["advertising"],
+    "projectUrl": "https://www.fermicoding.com",
+    "githubUrl": null,
+    "featured": true
+  },
+  {
+    "title": "Taglient Games",
+    "snippet": "Taglient Games official website.",
+    "challenge": "Official website for Taglient Games, featuring game listings and company information.",
+    "solution": "Placeholder solution.",
+    "thumbnail": "projects/taglientgames/thumbnail.webp",
+    "screenshots": ["projects/taglientgames/screenshot_1.webp"],
+    "technologies": ["react", "nodejs", "expressjs"],
+    "industries": ["entertainment"],
+    "projectUrl": "https://taglientgames.com",
+    "githubUrl": "https://github.com/milosristic65/TaglientGames",
+    "featured": true
+  }
+]

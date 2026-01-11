@@ -1,21 +1,73 @@
 import styles from "./Projects.module.scss";
 import "./Projects.scss";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import Dropdown, { type OptionType } from "../../components/Dropdown/Dropdown";
 
 import bannerImage from "../../assets/Banner/undraw_programming.svg";
 
-import { projects } from "../../data/projects";
-import { technologies } from "../../data/technologies";
-import { industries } from "../../data/industries";
+import { type Project } from "../../types/project";
+import { type Industry } from "../../types/industry";
+import { type Technology } from "../../types/technology";
 
 const Projects = () => {
+  const apiUrl = import.meta.env.VITE_API_URL || "";
+
   const [searchParams, setSearchParams] = useSearchParams();
   const industryParam = searchParams.get("industry");
   const techParam = searchParams.get("tech");
+
+  const [projects, setProjects] = useState<Project[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/projects.json`)
+      .then((res) => res.json())
+      .then((data: Project[]) => {
+        setProjects(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch projects:", error);
+      });
+  }, [apiUrl]);
+
+  const [technologyValue, setTechnologyValue] = useState<OptionType | null>();
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/technologies.json`)
+      .then((res) => res.json())
+      .then((data: Technology[]) => {
+        setTechnologies(data);
+
+        if (techParam) {
+          const found =
+            data
+              .map((item) => ({ label: item.name, value: item.value }))
+              .find((option) => option.value === techParam) ?? null;
+
+          setTechnologyValue(found);
+        }
+      });
+  }, [apiUrl, techParam]);
+
+  const [industryValue, setIndustryValue] = useState<OptionType | null>();
+  const [industries, setIndustries] = useState<Industry[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/industries.json`)
+      .then((res) => res.json())
+      .then((data: Industry[]) => {
+        setIndustries(data);
+
+        if (industryParam) {
+          const found =
+            data
+              .map((item) => ({ label: item.name, value: item.value }))
+              .find((option) => option.value === industryParam) ?? null;
+
+          setIndustryValue(found);
+        }
+      });
+  }, [apiUrl, industryParam]);
 
   const industryFilter = industries.map((industry) => ({
     label: industry.name,
@@ -26,15 +78,6 @@ const Projects = () => {
     label: tech.name,
     value: tech.value,
   }));
-
-  const [industryValue, setIndustryValue] = useState<OptionType | null>(() => {
-    return industryFilter.find((o) => o.value === industryParam) ?? null;
-  });
-  const [technologyValue, setTechnologyValue] = useState<OptionType | null>(
-    () => {
-      return technologyFilter.find((o) => o.value === techParam) ?? null;
-    }
-  );
 
   const onIndustryChange = (option: OptionType | null) => {
     setSearchParams((prev) => {
@@ -62,21 +105,26 @@ const Projects = () => {
     setTechnologyValue(option);
   };
 
-  const filteredProjects = projects.filter(
-    (project) =>
-      (technologyValue === null
-        ? true
-        : project.technologies.includes(technologyValue.value)) &&
-      (industryValue === null
-        ? true
-        : project.industries.includes(industryValue.value))
-  );
-
   const clearFilters = () => {
     setIndustryValue(null);
     setTechnologyValue(null);
     setSearchParams();
   };
+
+  const filteredProjects = projects.filter(
+    (project) =>
+      (technologyValue == null
+        ? true
+        : project.technologies.includes(technologyValue?.value ?? "")) &&
+      (industryValue == null
+        ? true
+        : project.industries.includes(industryValue?.value ?? ""))
+  );
+
+  // Loading
+  if (filteredProjects.length == 0) {
+    return <></>;
+  }
 
   return (
     <div className={styles.projects}>
@@ -133,7 +181,7 @@ const Projects = () => {
                 <ProjectCard
                   title={project.title}
                   snippet={project.snippet}
-                  thumbnail={project.thumbnail}
+                  thumbnail={`${apiUrl}/api/assets/${project.thumbnail}`}
                 />
               ))}
             </div>

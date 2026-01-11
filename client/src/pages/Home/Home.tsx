@@ -17,16 +17,44 @@ import ExperienceCard from "../../components/ExperienceCard/ExperienceCard";
 import { useParallax } from "../../hooks/useParallax";
 import { useInViewAnimation } from "../../hooks/useInViewAnimation";
 
-import { projects } from "../../data/projects";
-import { experiences } from "../../data/experiences";
-import { technologies } from "../../data/technologies";
+import { type Project } from "../../types/project";
+import { type Experience } from "../../types/experience";
+import { type Technology } from "../../types/technology";
 
 const Home = () => {
+  const apiUrl = import.meta.env.VITE_API_URL || "";
+
   // Banner //
   const bannerBackgroundRef = useParallax(0.2);
   const bannerLogosRef = useParallax(0.16);
 
+  // Featured projects //
+  const featuredProjectsRef = useInViewAnimation(styles.visible, 0.4);
+  const [projects, setProjects] = useState<Project[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/projects.json`)
+      .then((res) => res.json())
+      .then((data: Project[]) => {
+        setProjects(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch projects:", error);
+      });
+  }, [apiUrl]);
+
   // Tech Stack //
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/technologies.json`)
+      .then((res) => res.json())
+      .then((data: Technology[]) => {
+        setTechnologies(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch technologies:", error);
+      });
+  }, [apiUrl]);
+
   const technologiesWithProjectCount = technologies.map((tech) => {
     const count = projects.filter((project) =>
       project.technologies?.includes(tech.value)
@@ -38,10 +66,25 @@ const Home = () => {
     };
   });
 
-  // Featured projects //
-  const featuredProjectsRef = useInViewAnimation(styles.visible, 0.4);
-
   // Experiences //
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/experiences.json`)
+      .then((res) => res.json())
+      .then((data: Experience[]) => {
+        const experiencesData = data.map((exp) => ({
+          ...exp,
+          duration: {
+            start: new Date(exp.duration.start),
+            end: exp.duration.end ? new Date(exp.duration.end) : null,
+          },
+        }));
+        setExperiences(experiencesData);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch experiences:", error);
+      });
+  }, [apiUrl]);
   const [showAllExperiences, setShowAllExperiences] = useState(false);
   const experienceInitialCount = 1;
   const hasMoreExperiences = experiences.length > experienceInitialCount;
@@ -114,7 +157,7 @@ const Home = () => {
                   title={tech.name}
                   value={tech.value}
                   projectCount={tech.projectCount}
-                  logo={tech.icon!}
+                  logo={`${apiUrl}/api/assets/${tech.icon}`}
                   color={tech.color}
                 />
               ))}
@@ -135,7 +178,7 @@ const Home = () => {
                 <ProjectCard
                   title={project.title}
                   snippet={project.snippet}
-                  thumbnail={project.thumbnail}
+                  thumbnail={`${apiUrl}/api/assets/${project.thumbnail}`}
                 />
               ))}
           </div>
