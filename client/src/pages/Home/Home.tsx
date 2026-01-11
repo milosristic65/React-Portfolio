@@ -193,7 +193,7 @@ const Home = () => {
 
       <section className={styles.experienceSection}>
         <div className={`content ${styles.content}`}>
-          <h2>Experience</h2>
+          <h2>Roles</h2>
           <div className={`${styles.experienceList} ${styles.initialList}`}>
             {/* Initial list */}
             {experiences
