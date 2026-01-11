@@ -77,8 +77,11 @@ const ModelRenderer = () => {
         y > rect.height * region.y1 &&
         y < rect.height * region.y2;
 
+      const elementUnderMouse = document.elementFromPoint(e.clientX, e.clientY);
+      const isOnCanvas = elementUnderMouse === canvas;
+
       if (!isDragging) {
-        if (inRegion) {
+        if (inRegion && isOnCanvas) {
           document.body.style.cursor = "grab";
         } else {
           document.body.style.cursor = "auto";
