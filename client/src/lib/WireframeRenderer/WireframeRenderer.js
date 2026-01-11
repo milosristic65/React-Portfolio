@@ -149,11 +149,16 @@ export class WireframeRenderer {
       this.state.lastDragTime = performance.now();
     });
 
-    this.canvas.addEventListener("wheel", (e) => {
-      if (!this.zoomable) return;
-      e.preventDefault();
-      this.state.positionZ += e.deltaY * 0.001;
-    });
+    if (this.zoomable) {
+      this.canvas.addEventListener(
+        "wheel",
+        (e) => {
+          e.preventDefault();
+          this.state.positionZ += e.deltaY * 0.001;
+        },
+        { passive: true }
+      );
+    }
   }
 
   _clearCanvas() {

@@ -115,11 +115,12 @@ const ModelRenderer = () => {
     }
 
     document.body.addEventListener("mousemove", handleMouseMove);
-    document.body.addEventListener("wheel", handleMouseMove);
+    document.body.addEventListener("wheel", handleMouseMove, { passive: true });
     document.body.addEventListener("mousedown", handleMouseDown);
     document.body.addEventListener("mouseup", handleMouseUp);
     return () => {
       document.body.removeEventListener("mousemove", handleMouseMove);
+      document.body.removeEventListener("wheel", handleMouseMove);
       document.body.removeEventListener("mousedown", handleMouseDown);
       document.body.removeEventListener("mouseup", handleMouseUp);
       document.body.style.cursor = "auto";
