@@ -86,14 +86,16 @@ const ProjectDetails = () => {
         </div>
         <div
           ref={bannerBackgroundRef}
-          className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}
+          className={`bannerHeroWrapper loadFade ${styles.bannerHeroWrapper} ${
+            currentProject ? styles.loaded : ""
+          }`}
+          style={{
+            opacity: currentProject ? 1 : 0,
+          }}
         >
           <img
             src={`${apiUrl}/api/assets/${currentProject?.screenshots[0]}`}
-            className={`${styles.bannerHero} loadFade`}
-            style={{
-              opacity: currentProject ? 1 : 0,
-            }}
+            className={styles.bannerHero}
             alt="Projects Hero"
           />
         </div>
