@@ -36,6 +36,7 @@ export const ContactForm = ({ className }: ContactFormProps) => {
       setResponseMessage("");
     }
   };
+  const [isRecaptchaLoaded, setIsRecaptchaLoaded] = useState(false);
 
   // Form Submit
   const apiUrl = import.meta.env.VITE_API_URL || "";
@@ -87,7 +88,8 @@ export const ContactForm = ({ className }: ContactFormProps) => {
 
   return (
     <form
-      className={`${style.contactForm} ${classes.join(" ")}`}
+      className={`${style.contactForm} ${classes.join(" ")} loadFade`}
+      style={{ opacity: isRecaptchaLoaded ? 1 : 0 }}
       onSubmit={handleSubmit}
     >
       <input
@@ -121,6 +123,9 @@ export const ContactForm = ({ className }: ContactFormProps) => {
           ref={recaptchaRef}
           sitekey={recaptchaSiteKey}
           onChange={onVerify}
+          asyncScriptOnLoad={() => {
+            setIsRecaptchaLoaded(true);
+          }}
         />
         <button type="submit" disabled={status === "sending"}>
           {status === "sending" ? "Sending..." : "Send"}
