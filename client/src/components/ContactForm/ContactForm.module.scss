@@ -47,9 +47,15 @@
     }
   }
 
+  .formFooter {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
   .statusMessage {
     font-weight: bold;
-    
+
     p {
       margin: 0;
     }

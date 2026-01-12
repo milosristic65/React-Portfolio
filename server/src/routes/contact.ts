@@ -1,6 +1,7 @@
 import { Router } from "express";
 import nodeMailer from "nodemailer";
 import rateLimit from "express-rate-limit";
+import axios from "axios";
 
 const email = process.env.EMAIL;
 const password = process.env.PASSWORD;
@@ -44,6 +45,22 @@ async function contact({ user_name, user_email, user_message }: contactProps) {
   console.log("Message sent: " + info.messageId);
 }
 
+const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET;
+
+async function verifyRecaptcha(token: string) {
+  const response = await axios.post(
+    `https://www.google.com/recaptcha/api/siteverify`,
+    null,
+    {
+      params: {
+        secret: RECAPTCHA_SECRET,
+        response: token,
+      },
+    }
+  );
+  return response.data.success;
+}
+
 const contactLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   max: 3,
@@ -51,12 +68,18 @@ const contactLimiter = rateLimit({
 });
 
 router.post("/", contactLimiter, async (req, res) => {
-  const { user_name, user_email, user_message } = req.body;
+  const { user_name, user_email, user_message, recaptcha_token } = req.body;
   try {
+    // reCAPTCHA human verification
+    const isHuman = await verifyRecaptcha(recaptcha_token);
+    if (!isHuman || !recaptcha_token) {
+      return res.status(400).send("reCAPTCHA verification failed!");
+    }
+    // Response
     await contact({ user_name, user_email, user_message });
     res.status(200).send("Message sent successfully");
   } catch (error: any) {
-    res.status(500).send("Failed to send message");
+    res.status(500).send("Failed to send message!");
     console.log(error.message);
   }
 });
