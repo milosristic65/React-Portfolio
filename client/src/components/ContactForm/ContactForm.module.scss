@@ -5,6 +5,17 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  opacity: 0;
+
+  &.loaded {
+    animation: contactFadeIn 0.6s ease forwards;
+    animation-delay: 0.1s;
+
+    @media (max-width: $mobile) {
+      animation: contactFadeIn 0s forwards;
+      animation-delay: 0s;
+    }
+  }
 
   input,
   textarea {
@@ -47,10 +58,15 @@
     }
   }
 
-  .formFooter {
+  .submitSection {
     display: flex;
     justify-content: space-between;
     gap: 15px;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      align-items: flex-end;
+    }
   }
 
   .statusMessage {
@@ -63,5 +79,16 @@
     .error {
       color: $error-color;
     }
+  }
+}
+
+@keyframes contactFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

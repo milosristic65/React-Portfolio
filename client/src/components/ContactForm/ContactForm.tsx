@@ -88,8 +88,9 @@ export const ContactForm = ({ className }: ContactFormProps) => {
 
   return (
     <form
-      className={`${style.contactForm} ${classes.join(" ")} loadFade`}
-      style={{ opacity: isRecaptchaLoaded ? 1 : 0 }}
+      className={`${style.contactForm} ${classes.join(" ")} ${
+        isRecaptchaLoaded ? style.loaded : ""
+      }`}
       onSubmit={handleSubmit}
     >
       <input
@@ -118,7 +119,7 @@ export const ContactForm = ({ className }: ContactFormProps) => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <div className={style.formFooter}>
+      <div className={style.submitSection}>
         <ReCAPTCHA
           ref={recaptchaRef}
           sitekey={recaptchaSiteKey}
