@@ -75,7 +75,12 @@ const ProjectDetails = () => {
   return (
     <div className={styles.projectDetails}>
       <div className={`banner ${styles.banner}`}>
-        <div className={`bannerText ${styles.bannerText}`}>
+        <div
+          className={`bannerText ${styles.bannerText} loadFade`}
+          style={{
+            opacity: currentProject ? 1 : 0,
+          }}
+        >
           <h1>{currentProject?.title}</h1>
           <p>{currentProject?.snippet}</p>
         </div>
@@ -85,13 +90,21 @@ const ProjectDetails = () => {
         >
           <img
             src={`${apiUrl}/api/assets/${currentProject?.screenshots[0]}`}
-            className={styles.bannerHero}
+            className={`${styles.bannerHero} loadFade`}
+            style={{
+              opacity: currentProject ? 1 : 0,
+            }}
             alt="Projects Hero"
           />
         </div>
       </div>
 
-      <section className={styles.projectInfoSection}>
+      <section
+        className={`${styles.projectInfoSection} loadFade`}
+        style={{
+          opacity: currentProject ? 1 : 0,
+        }}
+      >
         <div className={`content ${styles.content} ${styles.challengeSection}`}>
           <h2>The Challenge</h2>
           <p>{currentProject?.challenge}</p>
@@ -102,7 +115,12 @@ const ProjectDetails = () => {
         </div>
       </section>
 
-      <section className={styles.screenshotsSection}>
+      <section
+        className={`${styles.screenshotsSection} loadFade`}
+        style={{
+          opacity: currentProject ? 1 : 0,
+        }}
+      >
         <div className={`content ${styles.content}`}>
           <Swiper
             modules={[Navigation, Pagination]}

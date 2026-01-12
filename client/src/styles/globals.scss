@@ -107,3 +107,8 @@ button,
   user-select: none;
   caret-color: transparent;
 }
+
+// Fade-in animation for dynamic elements
+.loadFade {
+  transition: opacity 0.4s;
+}

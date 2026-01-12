@@ -169,7 +169,10 @@ const Projects = () => {
             </div>
           </div>
         </div>
-        <div className={`content ${styles.content}`}>
+        <div
+          className={`content ${styles.content} loadFade`}
+          style={{ opacity: filteredProjects.length > 0 ? 1 : 0 }}
+        >
           {filteredProjects.length > 0 ? (
             <div className={styles.projectsGrid}>
               {filteredProjects.map((project) => (
@@ -181,9 +184,7 @@ const Projects = () => {
               ))}
             </div>
           ) : (
-            projects.length > 0 && (
-              <p>No projects match the selected filters.</p>
-            )
+            <p>No projects match the selected filters.</p>
           )}
         </div>
       </section>
