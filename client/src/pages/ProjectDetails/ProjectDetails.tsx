@@ -51,6 +51,7 @@ const ProjectDetails = () => {
 
   // Banner //
   const bannerBackgroundRef = useParallax(0.2);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   // Tech Stack //
   const technologiesWithProjectCount = technologies.map((tech) => {
@@ -87,7 +88,7 @@ const ProjectDetails = () => {
         <div
           ref={bannerBackgroundRef}
           className={`bannerHeroWrapper loadFade ${styles.bannerHeroWrapper} ${
-            currentProject ? styles.loaded : ""
+            imgLoaded ? styles.loaded : ""
           }`}
           style={{
             opacity: currentProject ? 1 : 0,
@@ -97,6 +98,7 @@ const ProjectDetails = () => {
             src={`${apiUrl}/api/assets/${currentProject?.screenshots[0]}`}
             className={styles.bannerHero}
             alt="Projects Hero"
+            onLoad={() => setImgLoaded(true)}
           />
         </div>
       </div>
