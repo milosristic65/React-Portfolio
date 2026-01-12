@@ -7,9 +7,15 @@ interface ProjectCardProps {
   title: string;
   snippet: string;
   thumbnail: string;
+  onLoad?: () => void;
 }
 
-const ProjectCard = ({ title, snippet, thumbnail }: ProjectCardProps) => {
+const ProjectCard = ({
+  title,
+  snippet,
+  thumbnail,
+  onLoad,
+}: ProjectCardProps) => {
   return (
     <div key={title} className={styles.projectCard}>
       <Link
@@ -18,7 +24,7 @@ const ProjectCard = ({ title, snippet, thumbnail }: ProjectCardProps) => {
         })}`}
         className={styles.projectLink}
       >
-        <img src={thumbnail} alt={title} />
+        <img src={thumbnail} alt={title} onLoad={onLoad} />
         <div className={styles.projectInfo}>
           <h3>{title}</h3>
           <p>{snippet}</p>

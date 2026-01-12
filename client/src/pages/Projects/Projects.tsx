@@ -121,6 +121,8 @@ const Projects = () => {
         : project.industries.includes(industryValue?.value ?? ""))
   );
 
+  const [loadedThumbnails, setLoadedThumbnails] = useState(0);
+
   return (
     <div className={styles.projects}>
       <div className={`banner ${styles.banner}`}>
@@ -171,7 +173,9 @@ const Projects = () => {
         </div>
         <div
           className={`content ${styles.content} loadFade`}
-          style={{ opacity: filteredProjects.length > 0 ? 1 : 0 }}
+          style={{
+            opacity: loadedThumbnails === filteredProjects.length ? 1 : 0,
+          }}
         >
           {filteredProjects.length > 0 ? (
             <div className={styles.projectsGrid}>
@@ -180,11 +184,14 @@ const Projects = () => {
                   title={project.title}
                   snippet={project.snippet}
                   thumbnail={`${apiUrl}/api/assets/${project.thumbnail}`}
+                  onLoad={() => setLoadedThumbnails((count) => count + 1)}
                 />
               ))}
             </div>
           ) : (
-            <p>No projects match the selected filters.</p>
+            projects.length > 0 && (
+              <p>No projects match the selected filters.</p>
+            )
           )}
         </div>
       </section>
