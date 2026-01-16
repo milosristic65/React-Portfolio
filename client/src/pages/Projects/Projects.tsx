@@ -83,8 +83,11 @@ const Projects = () => {
     setSearchParams((prev) => {
       const next = new URLSearchParams(prev);
 
-      if (option) next.set("industry", option.value);
-      else next.delete("industry");
+      if (option) {
+        next.set("industry", option.value);
+      } else {
+        next.delete("industry");
+      }
 
       return next;
     });
@@ -96,8 +99,11 @@ const Projects = () => {
     setSearchParams((prev) => {
       const next = new URLSearchParams(prev);
 
-      if (option) next.set("tech", option.value);
-      else next.delete("tech");
+      if (option) {
+        next.set("tech", option.value);
+      } else {
+        next.delete("tech");
+      }
 
       return next;
     });
