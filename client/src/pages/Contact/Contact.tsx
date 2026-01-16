@@ -5,6 +5,8 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 const Contact = () => {
   return (
     <div className={styles.contact}>
+      <title>Milos Ristic | Contact</title>
+      
       <div className={`banner ${styles.banner}`}>
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Contact</h1>

@@ -75,6 +75,10 @@ const ProjectDetails = () => {
 
   return (
     <div className={styles.projectDetails}>
+      <title>{`Milos Ristic ${
+        currentProject ? `| ${currentProject.title}` : ""
+      }`}</title>
+      
       <div className={`banner ${styles.banner}`}>
         <div
           className={`bannerText ${styles.bannerText} loadFade`}

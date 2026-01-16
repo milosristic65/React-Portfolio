@@ -104,6 +104,8 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
+      <title>Milos Ristic</title>
+      
       <div className={`banner ${styles.banner}`}>
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Milos Ristic</h1>
