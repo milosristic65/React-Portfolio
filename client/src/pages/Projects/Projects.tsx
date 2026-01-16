@@ -171,7 +171,7 @@ const Projects = () => {
         </div>
         <div
           className={`content ${styles.content} loadFade`}
-          style={{ opacity: filteredProjects.length > 0 ? 1 : 0 }}
+          style={{ opacity: projects.length > 0 ? 1 : 0 }}
         >
           {filteredProjects.length > 0 ? (
             <div className={styles.projectsGrid}>
