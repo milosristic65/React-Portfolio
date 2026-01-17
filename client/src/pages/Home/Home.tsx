@@ -27,6 +27,11 @@ const Home = () => {
   // Banner //
   const bannerBackgroundRef = useParallax(0.2);
   const bannerLogosRef = useParallax(0.16);
+  const callToActionRef = useInViewAnimation(
+    styles.callToActionVisible,
+    0.9,
+    true,
+  );
 
   // Featured projects //
   const featuredProjectsRef = useInViewAnimation(styles.visible, 0.4);
@@ -57,7 +62,7 @@ const Home = () => {
 
   const technologiesWithProjectCount = technologies.map((tech) => {
     const count = projects.filter((project) =>
-      project.technologies?.includes(tech.value)
+      project.technologies?.includes(tech.value),
     ).length;
 
     return {
@@ -97,7 +102,7 @@ const Home = () => {
 
     requestAnimationFrame(() => {
       setHeight(
-        showAllExperiences ? revealedExperiencesRef.current!.scrollHeight : 0
+        showAllExperiences ? revealedExperiencesRef.current!.scrollHeight : 0,
       );
     });
   }, [showAllExperiences]);
@@ -105,8 +110,8 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <title>Milos Ristic</title>
-      
-      <div className={`banner ${styles.banner}`}>
+
+      <div ref={callToActionRef} className={`banner ${styles.banner}`}>
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Milos Ristic</h1>
           <p>
@@ -124,11 +129,26 @@ const Home = () => {
             </div>
           </div>
         </div>
+
         <div ref={bannerLogosRef} className={styles.bannerLogos}>
           <img src={reactLogo} alt="React Logo" />
           <img src={phpLogo} alt="PHP Logo" />
           <img src={drupalLogo} alt="Drupal Logo" />
           <img src={dotnetLogo} alt="Dotnet Logo" />
+        </div>
+
+        <div className={styles.callToAction}>
+          {/* Mouse */}
+          <div className={styles.scrollDown}>
+            <div className={styles.scrollWheel}></div>
+          </div>
+          {/* Touch */}
+          <div className={styles.swipeDown}>
+            <div className={styles.dot}></div>
+            <div className={styles.trailWrapper}>
+              <div className={styles.trail}></div>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -80,6 +80,160 @@
     }
   }
 
+  .callToAction {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 30px;
+    opacity: 0;
+    transition: opacity 0.25s;
+
+    $scrollAnimationLength: 2s;
+    $scrollAnimationDelay: 0.5s;
+    .scrollDown {
+      border: 5px solid $background-color;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      animation: mouseAnim $scrollAnimationLength $scrollAnimationDelay infinite;
+
+      .scrollWheel {
+        position: relative;
+        margin: auto;
+        border-radius: 16px;
+        background-color: $background-color;
+        height: 12px;
+        width: 6px;
+        transform: translateY(5px);
+        animation: scrollAnim $scrollAnimationLength $scrollAnimationDelay
+          infinite;
+      }
+    }
+
+    @keyframes mouseAnim {
+      0%,
+      50% {
+        transform: translateY(0px);
+      }
+      20% {
+        transform: translateY(5px);
+      }
+    }
+
+    @keyframes scrollAnim {
+      0%,
+      50% {
+        transform: translateY(5px);
+      }
+      20% {
+        transform: translateY(15px);
+      }
+    }
+
+    $swipeAnimationLength: 3s;
+    $swipeAnimationDelay: 0.5s;
+    $swipeHeight: 60px;
+    $dotSize: 25px;
+    .swipeDown {
+      width: 100%;
+      height: 100%;
+
+      .dot {
+        width: $dotSize;
+        height: $dotSize;
+        background-color: $background-color;
+        border-radius: $swipeHeight;
+        opacity: 0;
+        animation: swipeAnim $swipeAnimationLength $swipeAnimationDelay infinite;
+      }
+
+      .trailWrapper {
+        width: $dotSize;
+        height: 75px;
+
+        .trail {
+          bottom: 0px;
+          position: absolute;
+          width: $dotSize;
+          height: $dotSize;
+          border-radius: $swipeHeight;
+          background-color: $background-color;
+          opacity: 0;
+          animation: trailAnim $swipeAnimationLength $swipeAnimationDelay
+            infinite;
+        }
+      }
+    }
+
+    @keyframes swipeAnim {
+      0% {
+        transform: translateY(0px);
+        opacity: 0;
+      }
+      5% {
+        opacity: 1;
+      }
+      40% {
+        transform: translateY(-$swipeHeight);
+        opacity: 1;
+      }
+      60% {
+        transform: translateY(-$swipeHeight);
+        opacity: 0;
+      }
+      80%,
+      100% {
+        transform: translateY(0px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes trailAnim {
+      0% {
+        height: $dotSize;
+        opacity: 0;
+      }
+      5% {
+        opacity: 0.25;
+      }
+      40% {
+        height: calc($dotSize + $swipeHeight);
+        opacity: 0.25;
+      }
+      60% {
+        height: calc($dotSize + $swipeHeight);
+        opacity: 0;
+      }
+      80%,
+      100% {
+        height: $dotSize;
+        opacity: 0;
+      }
+    }
+
+    @media (pointer: fine) {
+      .swipeDown {
+        display: none;
+      }
+    }
+    @media (pointer: coarse) {
+      width: $dotSize;
+      height: $dotSize;
+
+      .scrollDown {
+        display: none;
+      }
+    }
+  }
+
+  &.callToActionVisible {
+    .callToAction {
+      opacity: 0.8;
+    }
+  }
+
   @media (max-width: $mobile) {
     .bannerLogos {
       left: calc(50% - 250px);
@@ -182,14 +336,16 @@
       z-index: -1;
       transition: none;
       width: 0;
+      transition: width 0.5s ease-out;
     }
   }
 
   // Animated marker effect
   &.visible {
-    h2::before {
-      width: 100%;
-      transition: width 0.5s ease-out;
+    h2 {
+      &::before {
+        width: 100%;
+      }
     }
   }
 
@@ -235,7 +391,9 @@
     position: absolute;
     background-color: $text-color;
     z-index: 2;
-    transition: background-color 0.3s ease, transform 0.3s ease,
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease,
       margin 0.2s ease-in 0.25s;
 
     @media (hover: hover) and (pointer: fine) {
