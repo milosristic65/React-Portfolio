@@ -1,0 +1,16 @@
+{
+  "name": "react-portfolio",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace server\" \"npm run dev --workspace client\"",
+    "build": "concurrently \"npm run build --workspace server\" \"npm run build --workspace client\"",
+    "start": "concurrently \"npm run start --workspace server\" \"npm run preview --workspace client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

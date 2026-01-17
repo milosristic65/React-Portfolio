@@ -5,8 +5,10 @@ This is my personal portfolio website built with React for the frontend and Expr
 ## Features
 
 - Showcases my projects
-- Contact form with email sending (Node.js backend)
+- Contact form with email sending, from Node.js backend
 - Rate limiting and basic security for the contact API
+- Google reCAPTCHA bot protection
+- Fetches data from Node.js backend
 
 ## Getting Started
 
@@ -18,41 +20,54 @@ This is my personal portfolio website built with React for the frontend and Expr
 
 #### 1. Install dependencies
 
-For the frontend:
+Inside the root:
 ```bash
-cd client
-npm install
-```
-
-For the backend:
-```bash
-cd ../server
 npm install
 ```
 
 #### 2. Environment Variables
 
-Create a `.env` file in the `server` folder with your email credentials:
+Create a `.env` file in the `server` folder:
 
 ```
-EMAIL=your_email@gmail.com
-PASSWORD=your_email_password
-PORT=5000
+# CORS
+CORS_ORIGIN=https://frontend_url
+# Contact
+EMAIL=example@example.com
+PASSWORD=email_password
+# ReCAPTCHA
+RECAPTCHA_SECRET=YOUR_RECAPTCHA_SECRET_KEY
 ```
 
-#### 3. Run the app
+Create a `.env` file in the `client` folder:
 
-Start the backend:
+```
+# Backend API
+VITE_API_URL=https://backend_url
+# reCAPTCHA public key
+VITE_RECAPTCHA_SITE_KEY=recaptcha_site_key
+```
+
+#### 3. Build the app
+
+# Inside the root
 ```bash
-cd server
+npm run build
+```
+
+#### 4. Run the app
+
+```bash
 npm start
 ```
 
-Start the frontend:
+#### Dev build
+
 ```bash
-cd ../client
-npm start
+npm run dev
 ```
+
+###### You can run these inside the root.
 
 ## Deployment
 
