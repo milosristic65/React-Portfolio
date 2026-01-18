@@ -1,6 +1,5 @@
 import styles from "./Home.module.scss";
-import { useState, useRef, useEffect } from "react";
-import { motion } from "motion/react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ModelRenderer from "../../components/ModelRenderer/ModelRenderer";
 
@@ -79,10 +78,10 @@ const Home = () => {
       .then((data: Experience[]) => {
         const experiencesData = data.map((exp) => ({
           ...exp,
-          duration: {
-            start: new Date(exp.duration.start),
-            end: exp.duration.end ? new Date(exp.duration.end) : null,
-          },
+          // duration: {
+          //   start: new Date(exp.duration.start),
+          //   end: exp.duration.end ? new Date(exp.duration.end) : null,
+          // },
         }));
         setExperiences(experiencesData);
       })

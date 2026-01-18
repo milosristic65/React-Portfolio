@@ -12,10 +12,10 @@ interface ExperienceCardProps {
   title: string;
   logo: string;
   position: string;
-  duration: {
-    start: Date;
-    end: Date | null;
-  };
+  // duration: {
+  //   start: Date;
+  //   end: Date | null;
+  // };
   url?: string;
   relatedProjects?: string[];
 }
@@ -25,7 +25,7 @@ const ExperienceCard = ({
   logo,
   url,
   position,
-  duration,
+  // duration,
   relatedProjects,
 }: ExperienceCardProps) => {
   const apiUrl = import.meta.env.VITE_API_URL || "";
