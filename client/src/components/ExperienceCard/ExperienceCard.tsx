@@ -72,25 +72,27 @@ const ExperienceCard = ({
           <img src={`${apiUrl}/api/assets/${logo}`} title={title} />
         </a>
       </div>
-      <p className={styles.subtitle}>Related projects:</p>
-      {relatedProjects ? (
-        <div className={styles.projects}>
-          {filteredProjects.slice(0, 4).map((project) => (
-            <div key={project.title} className={styles.projectItem}>
-              <Link
-                to={`${ROUTES.PROJECTS}/${slugify(project.title, { lower: true })}`}
-              >
-                <img
-                  src={`${apiUrl}/api/assets/${project.thumbnail}`}
-                  alt={project.title}
-                />
-              </Link>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>No notable projects were found.</p>
-      )}
+      <div className={styles.cardContent}>
+        <p className={styles.subtitle}>Related projects:</p>
+        {relatedProjects ? (
+          <div className={styles.projects}>
+            {filteredProjects.slice(0, 4).map((project) => (
+              <div key={project.title} className={styles.projectItem}>
+                <Link
+                  to={`${ROUTES.PROJECTS}/${slugify(project.title, { lower: true })}`}
+                >
+                  <img
+                    src={`${apiUrl}/api/assets/${project.thumbnail}`}
+                    alt={project.title}
+                  />
+                </Link>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No notable projects were found.</p>
+        )}
+      </div>
       <h3 className={styles.position}>{position}</h3>
     </div>
   );

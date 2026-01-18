@@ -8,37 +8,46 @@
   gap: 15px;
   border-radius: $input-radius;
   padding: 20px;
-  aspect-ratio: 5 / 7;
+  padding-top: 100px;
+  aspect-ratio: 5 / 6;
   box-shadow: 0 2px 8px rgba(13, 2, 73, 0.2);
   background-color: $accent-color;
+  overflow: hidden;
+  transition: aspect-ratio 0.3s ease;
 
   .logo {
+    position: absolute;
+    top: 20px;
     align-self: center;
+    max-width: 90%;
     img {
       height: 50px;
       max-width: 100%;
     }
   }
 
-  .subtitle {
-    font-weight: bold;
-    font-size: $bigger-normal-text;
-    margin: 0;
-  }
+  .cardContent {
+    .subtitle {
+      font-weight: bold;
+      font-size: $bigger-normal-text;
+    }
 
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
 
-    .projectItem img {
-      width: 100%;
-      height: auto;
-      border-radius: $input-radius;
-      transition: transform 0.2s ease, filter 0.2s ease;
+      .projectItem img {
+        width: 100%;
+        height: auto;
+        border-radius: $input-radius;
+        transition:
+          transform 0.2s ease,
+          filter 0.2s ease;
 
-      &:hover {
-        transform: scale(1.05);
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
   }
@@ -57,5 +66,55 @@
     text-align: center;
     font-size: 1.25rem;
     font-weight: bold;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .logo {
+      top: 50%;
+      transform: translateY(-50%);
+      transition:
+        top 0.3s ease,
+        transform 0.3s ease;
+      img {
+        height: 60px;
+        transition: height 0.125s ease;
+      }
+    }
+
+    .cardContent {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease 0s;
+    }
+
+    .position {
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(100%);
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    &:hover {
+      .logo {
+        top: 20px;
+        transform: translateY(0);
+        img {
+          height: 50px;
+        }
+      }
+
+      .cardContent {
+        opacity: 1;
+        pointer-events: all;
+        transition: opacity 0.3s ease 0.125s;
+      }
+
+      .position {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
   }
 }
