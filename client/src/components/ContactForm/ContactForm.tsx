@@ -21,7 +21,7 @@ export const ContactForm = ({ className }: ContactFormProps) => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
+    "idle",
   );
   const [responseMessage, setResponseMessage] = useState("");
 
@@ -37,6 +37,7 @@ export const ContactForm = ({ className }: ContactFormProps) => {
     }
   };
   const [isRecaptchaLoaded, setIsRecaptchaLoaded] = useState(false);
+  const recaptchaSize = window.innerWidth < 600 ? "compact" : "normal";
 
   // Form Submit
   const apiUrl = import.meta.env.VITE_API_URL || "";
@@ -123,6 +124,7 @@ export const ContactForm = ({ className }: ContactFormProps) => {
         <ReCAPTCHA
           ref={recaptchaRef}
           sitekey={recaptchaSiteKey}
+          size={recaptchaSize}
           onChange={onVerify}
           asyncScriptOnLoad={() => {
             setIsRecaptchaLoaded(true);
