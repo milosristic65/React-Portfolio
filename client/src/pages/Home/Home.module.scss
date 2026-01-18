@@ -196,11 +196,11 @@
         opacity: 0;
       }
       5% {
-        opacity: 0.25;
+        opacity: 0.1;
       }
       40% {
         height: calc($dotSize + $swipeHeight);
-        opacity: 0.25;
+        opacity: 0.1;
       }
       60% {
         height: calc($dotSize + $swipeHeight);
@@ -221,6 +221,7 @@
     @media (pointer: coarse) {
       width: $dotSize;
       height: $dotSize;
+      bottom: 100px;
 
       .scrollDown {
         display: none;
