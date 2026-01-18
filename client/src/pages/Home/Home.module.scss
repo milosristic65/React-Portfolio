@@ -404,44 +404,25 @@
   }
 
   .experienceList {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
     margin-top: 15px;
 
     .experienceCard {
-      border-radius: $input-radius;
-      padding: 5px 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(13, 2, 73, 0.2);
-      background-color: $accent-color;
-      transform: translateY(0);
-
-      &:last-child {
-        margin-bottom: 0;
+      &:first-child {
+        h3 {
+          background-color: $primary-color;
+          color: $text-color;
+        }
       }
+    }
 
-      h3 {
-        margin-top: 10px;
-        background-color: $text-color;
-        color: $background-color;
-        padding: 5px;
-        display: inline-block;
-        border-radius: $input-radius;
-      }
-
-      // &.lastExperience {
-      //   h3 {
-      //     filter: $div-shadow;
-      //   }
-      // }
-
-      h4 {
-        padding: 5px;
-      }
-
-      p {
-        padding: 0 5px;
-      }
+    @media (max-width: $tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: $mobile) {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

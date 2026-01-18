@@ -49,7 +49,7 @@ const Footer = () => {
           <ul className={styles.socials}>
             {socials.map((social) => (
               <li key={social.name}>
-                <a href={social.url} target="_blank" rel="noopener noreferrer">
+                <a href={social.url} target="_blank">
                   <img
                     src={`${apiUrl}/api/assets/${social.icon ?? ""}`}
                     alt={social.name}

@@ -1,83 +1,98 @@
-import { addDays, intervalToDuration } from "date-fns";
+import styles from "./ExperienceCard.module.scss";
+
+// import { addDays, intervalToDuration } from "date-fns";
+import { useState, useEffect } from "react";
 import slugify from "slugify";
 import { ROUTES } from "../../config/routes";
 import { Link } from "react-router";
 
+import { type Project } from "../../types/project";
+
 interface ExperienceCardProps {
-  company: string;
+  title: string;
+  logo: string;
   position: string;
-  description: string;
   duration: {
     start: Date;
     end: Date | null;
   };
+  url?: string;
   relatedProjects?: string[];
 }
 
 const ExperienceCard = ({
-  company,
+  title,
+  logo,
+  url,
   position,
-  description,
   duration,
   relatedProjects,
 }: ExperienceCardProps) => {
-  const calculateDuration = (start: Date, end?: Date | null) => {
-    start = addDays(start, -1);
-    const dur = intervalToDuration({ start, end: end || new Date() });
-    const years = dur.years ?? 0;
-    const months = dur.months ?? 0;
-    const days = dur.days ?? 0;
+  const apiUrl = import.meta.env.VITE_API_URL || "";
 
-    const parts = [];
-    if (years) {
-      parts.push(`${years} year${years > 1 ? "s" : ""}`);
-      if (months > 0) parts.push(`${months} month${months > 1 ? "s" : ""}`);
-    } else if (months) {
-      parts.push(`${months} month${months > 1 ? "s" : ""}`);
-    } else {
-      parts.push(`${days} day${days > 1 ? "s" : ""}`);
-    }
-    return parts.join(", ");
-  };
+  // const calculateDuration = (start: Date, end?: Date | null) => {
+  //   start = addDays(start, -1);
+  //   const dur = intervalToDuration({ start, end: end || new Date() });
+  //   const years = dur.years ?? 0;
+  //   const months = dur.months ?? 0;
+  //   const days = dur.days ?? 0;
+
+  //   const parts = [];
+  //   if (years) {
+  //     parts.push(`${years} year${years > 1 ? "s" : ""}`);
+  //     if (months > 0) parts.push(`${months} month${months > 1 ? "s" : ""}`);
+  //   } else if (months) {
+  //     parts.push(`${months} month${months > 1 ? "s" : ""}`);
+  //   } else {
+  //     parts.push(`${days} day${days > 1 ? "s" : ""}`);
+  //   }
+  //   return parts.join(", ");
+  // };
+
+  const [projects, setProjects] = useState<Project[]>([]);
+  useEffect(() => {
+    fetch(`${apiUrl}/api/data/projects.json`)
+      .then((res) => res.json())
+      .then((data: Project[]) => {
+        setProjects(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch projects:", error);
+      });
+  }, [apiUrl]);
+
+  const filteredProjects = projects.filter((project) =>
+    relatedProjects?.includes(project.title),
+  );
 
   return (
-    <>
-      <h3>{company}</h3>
-      <h4 className="highlight">{position}</h4>
-      <p>{description}</p>
-      <p>
-        <strong>Duration:</strong>{" "}
-        {duration.start.toLocaleDateString("en-US", {
-          month: "long",
-          year: "numeric",
-        })}{" "}
-        -{" "}
-        {duration.end
-          ? duration.end.toLocaleDateString("en-US", {
-              month: "long",
-              year: "numeric",
-            })
-          : "Present"}{" "}
-        <span className="highlight">
-          ({calculateDuration(duration.start, duration.end)})
-        </span>
-      </p>
-      {relatedProjects && relatedProjects.length > 0 && (
-        <p>
-          <strong>Related projects:</strong>{" "}
-          {relatedProjects.map((project, index) => (
-            <span key={project}>
+    <div className={styles.experienceCard}>
+      <div className={styles.logo}>
+        <a href={url} target="_blank">
+          <img src={`${apiUrl}/api/assets/${logo}`} title={title} />
+        </a>
+      </div>
+      <p className={styles.subtitle}>Related projects:</p>
+      {relatedProjects ? (
+        <div className={styles.projects}>
+          {filteredProjects.slice(0, 4).map((project) => (
+            <div key={project.title} className={styles.projectItem}>
               <Link
-                to={`${ROUTES.PROJECTS}/${slugify(project, { lower: true })}`}
+                to={`${ROUTES.PROJECTS}/${slugify(project.title, { lower: true })}`}
               >
-                {project}
+                <img
+                  src={`${apiUrl}/api/assets/${project.thumbnail}`}
+                  alt={project.title}
+                />
               </Link>
-              {index < relatedProjects.length - 1 ? ", " : ""}
-            </span>
+            </div>
           ))}
-        </p>
+        </div>
+      ) : (
+        <p>No notable projects were found.</p>
       )}
-    </>
+      <h3 className={styles.position}>{position}</h3>
+    </div>
   );
 };
 

@@ -1,12 +1,12 @@
 export interface Experience {
-  company: string;
+  title: string;
   position: string;
-  description: string;
+  logo: string;
   duration: {
     start: Date;
     end: Date | null;
   };
-  logo?: string;
+  url?: string;
   relatedProjects?: string[];
   companyUrl?: string;
 }

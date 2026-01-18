@@ -1,0 +1,61 @@
+@use "../../styles/variables" as *;
+@use "sass:color";
+
+.experienceCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: $input-radius;
+  padding: 20px;
+  aspect-ratio: 5 / 7;
+  box-shadow: 0 2px 8px rgba(13, 2, 73, 0.2);
+  background-color: $accent-color;
+
+  .logo {
+    align-self: center;
+    img {
+      height: 50px;
+      max-width: 100%;
+    }
+  }
+
+  .subtitle {
+    font-weight: bold;
+    font-size: $bigger-normal-text;
+    margin: 0;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    .projectItem img {
+      width: 100%;
+      height: auto;
+      border-radius: $input-radius;
+      transition: transform 0.2s ease, filter 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .position {
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    padding: 12px 5px;
+    color: $background-color;
+    background-color: $text-color;
+    border-radius: $input-radius;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+}

@@ -90,22 +90,6 @@ const Home = () => {
         console.error("Failed to fetch experiences:", error);
       });
   }, [apiUrl]);
-  const [showAllExperiences, setShowAllExperiences] = useState(false);
-  const experienceInitialCount = 1;
-  const hasMoreExperiences = experiences.length > experienceInitialCount;
-  const revealedExperiencesRef = useRef<HTMLDivElement | null>(null);
-  const [experienceHeight, setHeight] = useState(0);
-
-  // Calculate revealed experiences list height
-  useEffect(() => {
-    if (!revealedExperiencesRef.current) return;
-
-    requestAnimationFrame(() => {
-      setHeight(
-        showAllExperiences ? revealedExperiencesRef.current!.scrollHeight : 0,
-      );
-    });
-  }, [showAllExperiences]);
 
   return (
     <div className={styles.home}>
@@ -216,65 +200,19 @@ const Home = () => {
       <section className={styles.experienceSection}>
         <div className={`content ${styles.content}`}>
           <h2>Roles</h2>
-          <div className={`${styles.experienceList} ${styles.initialList}`}>
+          <div className={`${styles.experienceList}`}>
             {/* Initial list */}
-            {experiences
-              .slice(0, experienceInitialCount)
-              .map((experience, index) => (
-                <div
-                  key={experience.company}
-                  className={`${styles.experienceCard} ${
-                    index === 0 ? styles.lastExperience : ""
-                  }`}
-                >
-                  <ExperienceCard {...experience} />
-                </div>
-              ))}
-            {/* Revealed list */}
-            <motion.div
-              ref={revealedExperiencesRef}
-              className={styles.revealedExperienceList}
-              initial={{ height: 0, opacity: 0 }}
-              animate={{
-                height: showAllExperiences ? experienceHeight : 0,
-                opacity: showAllExperiences ? 1 : 0,
-              }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              style={{
-                overflow: "hidden",
-                margin: "-10px -10px",
-                padding: "10px 10px",
-                pointerEvents: showAllExperiences ? "auto" : "none",
-              }}
-            >
-              {experiences
-                .slice(experienceInitialCount)
-                .map((experience, index) => (
-                  <motion.div
-                    key={experience.company}
-                    className={styles.experienceCard}
-                    initial={{ y: 20 }}
-                    animate={{ y: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: index * 0.1,
-                      ease: "easeOut",
-                    }}
-                  >
-                    <ExperienceCard {...experience} />
-                  </motion.div>
-                ))}
-            </motion.div>
+            {experiences.map((experience, index) => (
+              <div
+                key={experience.title}
+                className={`${styles.experienceCard} ${
+                  index === 0 ? styles.lastExperience : ""
+                }`}
+              >
+                <ExperienceCard {...experience} />
+              </div>
+            ))}
           </div>
-          {/* Show More button */}
-          {hasMoreExperiences && (
-            <button
-              className={`buttonLink ${styles.buttonLink}`}
-              onClick={() => setShowAllExperiences(!showAllExperiences)}
-            >
-              {showAllExperiences ? "Show Less" : "Show More"}
-            </button>
-          )}
         </div>
       </section>
     </div>

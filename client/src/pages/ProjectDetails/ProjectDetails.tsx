@@ -46,7 +46,7 @@ const ProjectDetails = () => {
   }, [apiUrl]);
 
   const currentProject = projects.find(
-    (project) => slugify(project.title, { lower: true }) === projectSlug
+    (project) => slugify(project.title, { lower: true }) === projectSlug,
   );
 
   // Banner //
@@ -56,7 +56,7 @@ const ProjectDetails = () => {
   // Tech Stack //
   const technologiesWithProjectCount = technologies.map((tech) => {
     const count = projects.filter((project) =>
-      project.technologies?.includes(tech.value)
+      project.technologies?.includes(tech.value),
     ).length;
 
     return {
@@ -78,7 +78,7 @@ const ProjectDetails = () => {
       <title>{`Milos Ristic ${
         currentProject ? `| ${currentProject.title}` : ""
       }`}</title>
-      
+
       <div className={`banner ${styles.banner}`}>
         <div
           className={`bannerText ${styles.bannerText} loadFade`}
@@ -233,22 +233,14 @@ const ProjectDetails = () => {
             <h2>View The Project</h2>
             {currentProject?.projectUrl && (
               <p>
-                <a
-                  href={currentProject?.projectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={currentProject?.projectUrl} target="_blank">
                   {currentProject?.title}
                 </a>
               </p>
             )}
             {currentProject?.githubUrl && (
               <p>
-                <a
-                  href={currentProject?.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={currentProject?.githubUrl} target="_blank">
                   Source code
                 </a>
               </p>
@@ -263,7 +255,7 @@ const ProjectDetails = () => {
           <div className={styles.techStackGrid}>
             {technologiesWithProjectCount
               .filter((tech) =>
-                currentProject?.technologies.includes(tech.value)
+                currentProject?.technologies.includes(tech.value),
               )
               .map((tech) => (
                 <TechCard
