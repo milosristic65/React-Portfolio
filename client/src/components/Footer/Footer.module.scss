@@ -105,10 +105,20 @@ footer {
   .footerInside {
     opacity: 0;
     transform: translateY(40%);
-    transition: opacity 0.4s ease, transform 0.8s ease;
+    transition:
+      opacity 0.4s ease,
+      transform 0.8s ease;
   }
   &.visible {
     .footerInside {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: $mobile) {
+    .footerInside {
+      transition: 0;
       opacity: 1;
       transform: translateY(0);
     }
