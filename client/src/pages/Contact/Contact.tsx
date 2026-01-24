@@ -1,12 +1,15 @@
 import styles from "./Contact.module.scss";
 import bannerImage from "../../assets/Banner/undraw_mailbox.svg";
 import ContactForm from "../../components/ContactForm/ContactForm";
+import { useParallax } from "../../hooks/useParallax";
 
 const Contact = () => {
+  const bannerBackgroundRef = useParallax(0.2);
+
   return (
     <div className={styles.contact}>
       <title>Milos Ristic | Contact</title>
-      
+
       <div className={`banner ${styles.banner}`}>
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Contact</h1>
@@ -14,7 +17,10 @@ const Contact = () => {
             Let's talk, <span className="highlight">send an email</span>.
           </p>
         </div>
-        <div className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}>
+        <div
+          ref={bannerBackgroundRef}
+          className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}
+        >
           <div className={`${styles.bannerHeroBackground}`}>
             <img
               src={bannerImage}

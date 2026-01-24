@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import Dropdown, { type OptionType } from "../../components/Dropdown/Dropdown";
+import { useParallax } from "../../hooks/useParallax";
 
 import bannerImage from "../../assets/Banner/undraw_programming.svg";
 
@@ -18,6 +19,8 @@ const Projects = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const industryParam = searchParams.get("industry");
   const techParam = searchParams.get("tech");
+
+  const bannerBackgroundRef = useParallax(0.2);
 
   const [projects, setProjects] = useState<Project[]>([]);
   useEffect(() => {
@@ -124,20 +127,23 @@ const Projects = () => {
         : project.technologies.includes(technologyValue?.value ?? "")) &&
       (industryValue == null
         ? true
-        : project.industries.includes(industryValue?.value ?? ""))
+        : project.industries.includes(industryValue?.value ?? "")),
   );
 
   return (
     <div className={styles.projects}>
       <title>Milos Ristic | Projects</title>
-      
+
       <div className={`banner ${styles.banner}`}>
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Projects</h1>
           <p>
             From experiments to <span className="highlight">client work</span>.
           </p>
-          <div className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}>
+          <div
+            ref={bannerBackgroundRef}
+            className={`bannerHeroWrapper ${styles.bannerHeroWrapper}`}
+          >
             <div className={`${styles.bannerHeroBackground}`}>
               <img
                 src={bannerImage}
