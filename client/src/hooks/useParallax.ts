@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 export const useParallax = (speed: number) => {
   const ref = useRef<HTMLDivElement>(null);
   
-  const ease = 0.06;
   const targetY = useRef(0);
   const currentY = useRef(0);
   const animationFrameID = useRef<number | null>(null);
@@ -14,7 +13,7 @@ export const useParallax = (speed: number) => {
     };
 
     const animate = () => {
-      currentY.current += (targetY.current - currentY.current) * ease;
+      currentY.current += (targetY.current - currentY.current);
 
       if (ref.current) {
         ref.current.style.transform = `translateY(${currentY.current}px)`;
