@@ -25,7 +25,7 @@ const Home = () => {
 
   // Banner //
   const bannerBackgroundRef = useParallax(0.2);
-  const bannerLogosRef = useParallax(0.16);
+  const bannerLogosRef = useParallax(0.1);
   const callToActionRef = useInViewAnimation(
     styles.callToActionVisible,
     0.9,

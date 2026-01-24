@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 export const useParallax = (speed: number) => {
   const ref = useRef<HTMLDivElement>(null);
   
-  const ease = 0.1;
+  const ease = 0.06;
   const targetY = useRef(0);
   const currentY = useRef(0);
   const animationFrameID = useRef<number | null>(null);
