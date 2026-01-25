@@ -50,7 +50,7 @@ VITE_RECAPTCHA_SITE_KEY=recaptcha_site_key
 
 #### 3. Build the app
 
-# Inside the root
+
 ```bash
 npm run build
 ```
@@ -61,7 +61,7 @@ npm run build
 npm start
 ```
 
-#### Dev build
+#### Run dev build
 
 ```bash
 npm run dev
