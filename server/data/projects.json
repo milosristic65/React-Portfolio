@@ -2,8 +2,8 @@
   {
     "title": "Easy Kitchen Lab",
     "snippet": "E-commerce platform for kitchen appliances.",
-    "challenge": "Full-stack e-commerce solution. Features user authentication, shopping cart, and payment integration.",
-    "solution": "Placeholder solution.",
+    "challenge": "Tasked with finishing key features on an <b>e-commerce platform</b>, including the <b>payment system</b>, <b>order notifications</b>, <b>SEO enhancements</b>, and checkout redesign. Also needed to improve performance by optimizing <b>API logic</b> and implementing <b>caching</b>, all without breaking existing functionality.",
+    "solution": "Added <b>Stripe</b> card payments alongside the existing <b>PayPal</b> method and ensured <b>backend price validation</b> to prevent tampering. Redesigned the checkout modal for a more approachable user experience. Optimized checkout waiting times by switching from the Selenium script to the <b>WooCommerce API</b> and implemented <b>Redis</b> caching. Added <b>SEO and AEO meta tags</b>, including a <b>FAQ section</b>, and integrated <b>Google Analytics tracking</b> to monitor user interactions and conversion metrics.",
     "thumbnail": "projects/easykitchenlab/thumbnail.webp",
     "screenshots": [
       "projects/easykitchenlab/screenshot_1.webp",
@@ -23,8 +23,8 @@
   {
     "title": "Fermicoding",
     "snippet": "Fermicoding official website.",
-    "challenge": "Full-stack website for coding tutorials and resources.",
-    "solution": "Placeholder solution.",
+    "challenge": "Tasked with improving the website to attract potential clients, focusing on <b>content organization</b>, <b>user experience</b>, and <b>responsiveness</b>.",
+    "solution": "Added a new <b>taxonomy page</b> for industries, showing recent news and related projects for each. Also, enhanced <b>Used Services</b> filters using taxonomies. Redesigned the <b>footer</b> and <b>client testimonials</b> section, making it a reusable block for any page. Made the <b>banner slides</b> mobile responsive.",
     "thumbnail": "projects/fermicoding/thumbnail.webp",
     "screenshots": [
       "projects/fermicoding/screenshot_1.webp",
@@ -42,8 +42,8 @@
   {
     "title": "Taglient Games",
     "snippet": "Taglient Games official website.",
-    "challenge": "Official website for Taglient Games, featuring game listings and company information.",
-    "solution": "Placeholder solution.",
+    "challenge": "Needed a website to showcase my game development brand and projects, while also learning <b>React</b> and exploring frontend/backend separation and <b>hosting</b>.",
+    "solution": "Built the website with a <b>React</b> frontend and <b>Express.js</b> backend - for the contact form. Learned to handle <b>API communication</b> between frontend and backend, host both on <b>Vercel</b>, and resolve <b>CORS</b> errors. Gained hands-on experience with <b>React components</b> and making the site fully responsive.",
     "thumbnail": "projects/taglientgames/thumbnail.webp",
     "screenshots": ["projects/taglientgames/screenshot_1.webp"],
     "technologies": ["react", "nodejs", "expressjs"],

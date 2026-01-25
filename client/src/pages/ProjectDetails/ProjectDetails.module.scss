@@ -80,6 +80,13 @@
     background-color: $text-color;
     border-radius: $input-radius;
   }
+
+  p {
+    b {
+      color: $primary-color;
+      font-weight: bold;
+    }
+  }
 }
 
 .solutionSection {
@@ -92,7 +99,7 @@
   }
 }
 
-.screenshotsSection {  
+.screenshotsSection {
   img {
     width: 100%;
     border-radius: $input-radius;
