@@ -5,7 +5,15 @@
     "challenge": "Full-stack e-commerce solution. Features user authentication, shopping cart, and payment integration.",
     "solution": "Placeholder solution.",
     "thumbnail": "projects/easykitchenlab/thumbnail.webp",
-    "screenshots": ["projects/easykitchenlab/screenshot_1.webp"],
+    "screenshots": [
+      "projects/easykitchenlab/screenshot_1.webp",
+      "projects/easykitchenlab/screenshot_2.webp",
+      "projects/easykitchenlab/screenshot_3.webp",
+      "projects/easykitchenlab/screenshot_4.webp",
+      "projects/easykitchenlab/screenshot_5.webp",
+      "projects/easykitchenlab/screenshot_6.webp",
+      "projects/easykitchenlab/screenshot_7.webp"
+    ],
     "technologies": ["drupal", "php", "jquery", "mysql"],
     "industries": ["ecommerce"],
     "projectUrl": "https://www.easykitchenlab.com",
@@ -18,7 +26,13 @@
     "challenge": "Full-stack website for coding tutorials and resources.",
     "solution": "Placeholder solution.",
     "thumbnail": "projects/fermicoding/thumbnail.webp",
-    "screenshots": ["projects/fermicoding/screenshot_1.webp"],
+    "screenshots": [
+      "projects/fermicoding/screenshot_1.webp",
+      "projects/fermicoding/screenshot_2.webp",
+      "projects/fermicoding/screenshot_3.webp",
+      "projects/fermicoding/screenshot_4.webp",
+      "projects/fermicoding/screenshot_5.webp"
+    ],
     "technologies": ["drupal", "php", "jquery", "mysql"],
     "industries": ["advertising"],
     "projectUrl": "https://www.fermicoding.com",
