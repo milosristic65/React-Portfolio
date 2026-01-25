@@ -18,13 +18,13 @@
     background-color: $primary-color;
     transform: rotate(-0.5deg);
     z-index: -1;
-    animation: wobble 6s ease-in-out infinite;
+    // animation: wobble 6s ease-in-out infinite;
     transition: filter 0.3s ease;
     filter: drop-shadow(2px 1px 10px rgba(0, 0, 0, 0.15));
 
-    @media (max-width: $tablet) {
-      animation: none;
-    }
+    // @media (max-width: $tablet) {
+    //   animation: none;
+    // }
   }
 
   &.atTop {
