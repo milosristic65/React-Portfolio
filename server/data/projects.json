@@ -45,7 +45,12 @@
     "challenge": "Needed a website to showcase my game development brand and projects, while also learning <b>React</b> and exploring frontend/backend separation and <b>hosting</b>.",
     "solution": "Built the website with a <b>React</b> frontend and <b>Express.js</b> backend - for the contact form. Learned to handle <b>API communication</b> between frontend and backend, host both on <b>Vercel</b>, and resolve <b>CORS</b> errors. Gained hands-on experience with <b>React components</b> and making the site fully responsive.",
     "thumbnail": "projects/taglientgames/thumbnail.webp",
-    "screenshots": ["projects/taglientgames/screenshot_1.webp"],
+    "screenshots": [
+      "projects/taglientgames/screenshot_1.webp",
+      "projects/taglientgames/screenshot_2.webp",
+      "projects/taglientgames/screenshot_3.webp",
+      "projects/taglientgames/screenshot_4.webp"
+    ],
     "technologies": ["react", "nodejs", "expressjs"],
     "industries": ["entertainment"],
     "projectUrl": "https://taglientgames.com",
