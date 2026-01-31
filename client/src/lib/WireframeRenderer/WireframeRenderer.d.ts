@@ -3,11 +3,6 @@ export const PROJECTION: {
   ORTHOGRAPHIC: "orthographic";
 };
 
-export const DIRECTION: {
-  LEFT: "left";
-  RIGHT: "right";
-};
-
 export type Vertex = number[];
 export type Face = number[];
 
@@ -19,7 +14,7 @@ export interface WireframeRendererOptions {
   draggable?: boolean;
   zoomable?: boolean;
   autoRotate?: boolean;
-  rotatingDirection?: "left" | "right";
+  rotationSpeed?: number;
   faceOpacity?: number;
   lineWidth?: number;
   renderVertices?: boolean;
@@ -52,7 +47,7 @@ export class WireframeRenderer {
   draggable: boolean;
   zoomable: boolean;
   autoRotate: boolean;
-  rotatingDirection: number;
+  rotationSpeed: number;
   faceOpacity: number;
   lineWidth: number;
   renderVertices: boolean;

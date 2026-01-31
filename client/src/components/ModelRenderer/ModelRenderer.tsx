@@ -2,7 +2,6 @@ import styles from "./ModelRenderer.module.scss";
 import { useRef, useEffect } from "react";
 import {
   WireframeRenderer,
-  DIRECTION,
   PROJECTION,
 } from "../../lib/WireframeRenderer/WireframeRenderer";
 
@@ -31,7 +30,7 @@ const ModelRenderer = () => {
       renderVertices: true,
       renderEdges: true,
       vertexSize: 8,
-      rotatingDirection: DIRECTION.RIGHT,
+      rotationSpeed: 1,
       farClip: 10,
       nearClip: 0.1,
       background: "transparent",

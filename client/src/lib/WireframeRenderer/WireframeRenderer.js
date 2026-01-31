@@ -4,12 +4,6 @@ export const PROJECTION = {
   ORTHOGRAPHIC: "orthographic",
 };
 
-// Rotation directions
-export const DIRECTION = {
-  LEFT: "left",
-  RIGHT: "right",
-};
-
 export class WireframeRenderer {
   constructor(canvas, options = {}) {
     this.canvas = canvas;
@@ -28,7 +22,7 @@ export class WireframeRenderer {
       IDLE_RESET_DELAY: 2000,
       X_RETURN_SPEED: 0.02,
     };
-    this.FPS = 60;
+    this.lastFrameTime = null;
     this.FAR_CLIP = options.farClip || 10;
     this.NEAR_CLIP = options.nearClip || 0.1;
     this.BACKGROUND = options.background || "#d9d9d9ff";
@@ -36,25 +30,20 @@ export class WireframeRenderer {
     this.draggable = options.draggable || false;
     this.zoomable = options.zoomable || false;
     this.autoRotate = options.autoRotate || false;
-    this.rotatingDirection = 1;
+    this.rotationSpeed = options.rotationSpeed ?? 1;
     this.faceOpacity = options.faceOpacity || 0;
     this.lineWidth = options.lineWidth || 1;
     this.renderVertices = options.renderVertices || false;
     this.renderEdges = options.renderEdges || false;
     this.vertexSize = options.vertexSize || 10;
     this.dpr = window.devicePixelRatio || 1;
-    if (options.rotatingDirection === "left") {
-      this.rotatingDirection = -1;
-    } else if (options.rotatingDirection === "right") {
-      this.rotatingDirection = 1;
-    }
     this.projection = options.projection || "perspective";
     this._setupEvents();
     this._setupResizeObserver();
     this.setPosition(
       options.coordinates?.x || 0,
       options.coordinates?.y || 0,
-      options.coordinates?.z || 0
+      options.coordinates?.z || 0,
     );
     this.setRotation(0, 0);
   }
@@ -118,7 +107,8 @@ export class WireframeRenderer {
   }
 
   start() {
-    this._frame();
+    this._lastFrameTime = null;
+    requestAnimationFrame((ts) => this._frame(ts));
   }
 
   _setupEvents() {
@@ -156,7 +146,7 @@ export class WireframeRenderer {
           e.preventDefault();
           this.state.positionZ += e.deltaY * 0.001;
         },
-        { passive: true }
+        { passive: true },
       );
     }
   }
@@ -258,7 +248,7 @@ export class WireframeRenderer {
 
       // Project to screen
       const screenPoints = faceVerts.map((vertex) =>
-        this._screen(this._project(vertex))
+        this._screen(this._project(vertex)),
       );
 
       // Get the predetermined shade for this face
@@ -290,9 +280,16 @@ export class WireframeRenderer {
     return { vertices, faces };
   }
 
-  _frame() {
-    const deltaTime = 0.04 / this.FPS;
+  _frame(timestamp) {
+    if (!this._lastFrameTime) {
+      this._lastFrameTime = timestamp;
+    }
+
+    const ROTATION_SPEED = Math.PI / 10;
+    const deltaTime = (timestamp - this._lastFrameTime) / 1000;
     const center = this._getCenter(this.vertices);
+    this._lastFrameTime = timestamp;
+
     this._clearCanvas();
 
     // Rotation inertia
@@ -314,13 +311,15 @@ export class WireframeRenderer {
         const target =
           this.state.initialRotationX +
           Math.round(
-            (this.state.rotationX - this.state.initialRotationX) / (2 * Math.PI)
+            (this.state.rotationX - this.state.initialRotationX) /
+              (2 * Math.PI),
           ) *
             (2 * Math.PI);
         this.state.rotationX +=
           (target - this.state.rotationX) * this.state.X_RETURN_SPEED;
 
-        this.state.rotationY += Math.PI * deltaTime * this.rotatingDirection;
+        this.state.rotationY +=
+          ROTATION_SPEED * deltaTime * this.rotationSpeed;
       }
     }
 
@@ -330,7 +329,7 @@ export class WireframeRenderer {
         vertex,
         this.state.rotationX,
         this.state.rotationY,
-        center
+        center,
       );
       return this._translate(vertex, {
         x: this.state.positionX,
@@ -412,14 +411,14 @@ export class WireframeRenderer {
             screen.y,
             this.vertexSize / this.dpr,
             0,
-            Math.PI * 2
+            Math.PI * 2,
           );
           this.context.fill();
         }
       }
     }
 
-    requestAnimationFrame(() => this._frame());
+    requestAnimationFrame((ts) => this._frame(ts));
 
     // Just draw the first frame if the model is not interactive
     if (this._hasDrawnFirstFrame) {
