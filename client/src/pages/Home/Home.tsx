@@ -220,7 +220,7 @@ const Home = () => {
         <div className={`content ${styles.content}`}>
           <h2>Who Am I</h2>
           <div className={styles.contentBackground}>
-            <img src={portrait} />
+            <img src={portrait} alt="Portrait of Milos Ristic leaning on a railing" />
             <div>
               <h3>I'm a programmer</h3>
               <p>
