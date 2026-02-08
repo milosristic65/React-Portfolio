@@ -17,12 +17,10 @@ export const SelectStyles: StylesConfig<
     borderColor: state.isFocused ? "#39AC95" : "#182628",
     borderWidth: "0",
     borderRadius: "2px",
-    boxShadow: "0 2px 8px rgba(13, 2, 73, 0.2)",
+    boxShadow: "0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);",
+    outline: state.isFocused ? "3px solid #65CCB8" : "none",
     minHeight: "44px",
-    transition: "all 0.2s ease",
-    "&:hover": {
-      borderColor: state.isFocused ? "#39AC95" : "#182628",
-    },
+    transition: "all 0s",
   }),
   valueContainer: (base) => ({
     ...base,
@@ -76,8 +74,5 @@ export const SelectStyles: StylesConfig<
     color: state.isFocused ? "#39AC95" : "#1f2937",
     transition: "all 0.2s ease",
     transform: state.selectProps.menuIsOpen ? "rotate(180deg)" : "rotate(0)",
-    "&:hover": {
-      color: "#39AC95",
-    },
   }),
 };

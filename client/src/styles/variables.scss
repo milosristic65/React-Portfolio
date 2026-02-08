@@ -2,13 +2,17 @@
 $primary-color: #65ccb8;
 $secondary-color: #57ba98;
 $text-color: #182628;
-$background-color: #f2f2f2;
+$background-color: #ebebeb;
 $accent-color: white;
 $muted-text: #868686;
-$error-color: #C0392B;
+$error-color: #c0392b;
 
+// Effects
 $div-shadow: drop-shadow(0 0 10px rgba(7, 45, 216, 0.8))
   drop-shadow(0 0 20px rgba(108, 9, 238, 0.4));
+$natural-box-shadow:
+  0 5px 10px rgba(154, 160, 185, 0.05),
+  0 15px 40px rgba(166, 173, 201, 0.2);
 
 // Structure
 $content-width: 1280px;

@@ -14,7 +14,7 @@ $cardTransiton: 0.3s;
   height: auto;
   overflow: hidden;
   background-color: $accent-color;
-  box-shadow: 0 2px 8px rgba(13, 2, 73, 0.2);
+  box-shadow: $natural-box-shadow;
   cursor: pointer;
   transition: box-shadow $cardTransiton ease-in-out;
 
@@ -45,7 +45,8 @@ $cardTransiton: 0.3s;
     transform: translate(-50%, -50%);
     z-index: 0;
     opacity: 0.5;
-    transition: opacity $cardTransiton ease-in-out,
+    transition:
+      opacity $cardTransiton ease-in-out,
       transform $cardTransiton ease-in-out;
   }
 
@@ -59,7 +60,8 @@ $cardTransiton: 0.3s;
     padding: 15px;
     box-shadow: transparent;
     opacity: 0;
-    transition: opacity $cardTransiton ease-in-out,
+    transition:
+      opacity $cardTransiton ease-in-out,
       transform $cardTransiton ease-in-out,
       box-shadow $cardTransiton ease-in-out;
   }

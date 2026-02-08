@@ -103,7 +103,7 @@
 
   // Project Cards
   & > * {
-    box-shadow: 0 2px 8px rgba(9, 2, 54, 0.2);
+    box-shadow: $natural-box-shadow;
     animation: fadeInUp 0.5s ease;
   }
 
