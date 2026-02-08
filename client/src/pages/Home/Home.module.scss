@@ -427,3 +427,59 @@
     }
   }
 }
+
+.whoAmISection {
+  h2 {
+    display: inline-block;
+    padding: 5px;
+    color: $background-color;
+    background-color: $text-color;
+    border-radius: $input-radius;
+  }
+
+  .contentBackground {
+    position: relative;
+    color: $background-color;
+    background-color: transparent;
+    font-size: $bigger-normal-text;
+    padding: 30px;
+    display: flex;
+    gap: 50px;
+    border-radius: $input-radius;
+
+    h3 {
+      color: $text-color;
+      background-color: $primary-color;
+      display: inline-block;
+      padding: 5px;
+      border-radius: $input-radius;
+    }
+
+    img {
+      border-radius: $input-radius;
+      display: block;
+      object-fit: cover;
+      max-width: 50%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      right: 0;
+      bottom: -5px;
+      left: 0;
+      transform: rotate(-1deg);
+      z-index: -1;
+      background-color: $text-color;
+    }
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}

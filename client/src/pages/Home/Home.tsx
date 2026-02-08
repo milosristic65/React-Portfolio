@@ -9,6 +9,7 @@ import reactLogo from "../../assets/TechStack/react.svg";
 import dotnetLogo from "../../assets/TechStack/dotnet.svg";
 import phpLogo from "../../assets/TechStack/php.svg";
 import drupalLogo from "../../assets/TechStack/drupal.svg";
+import portrait from "../../assets/About/milos.webp";
 
 import TechCard from "../../components/TechCard/TechCard";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
@@ -210,6 +211,31 @@ const Home = () => {
                 <ExperienceCard {...experience} />
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.whoAmISection}>
+        <div className={`content ${styles.content}`}>
+          <h2>Who Am I</h2>
+          <div className={styles.contentBackground}>
+            <img src={portrait} />
+            <div>
+              <h3>I'm a programmer</h3>
+              <p>
+                My name is Milos Ristic. I was always interested in computers,
+                for as long as I can remember. It started with playing video
+                games at my uncle's computer to eventually making my own tiny video
+                games, and later moving to web development starting in high
+                school.
+              </p>
+              <p>
+                Now I'm simultaneously attending college, majoring in computer
+                engineering, while working full time. This experience has pushed
+                my boundaries and made me learn a lot in a span of a couple of
+                years, and I love every second of it.
+              </p>
+            </div>
           </div>
         </div>
       </section>
