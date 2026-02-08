@@ -143,9 +143,10 @@ const Home = () => {
             Focusing on <span className="highlight">backend logic</span>,{" "}
             <span className="highlight">data modeling</span>, and building
             maintainable systems while also creating{" "}
-            <span className="highlight">modern, responsive frontends</span> that
-            connect everything into complete, polished solutions. I genuinely
-            enjoy solving programming challenges like puzzles.
+            <span className="highlight">modern</span>,{" "}
+            <span className="highlight">responsive frontends</span> that connect
+            everything into complete, polished solutions. I genuinely enjoy
+            solving programming challenges like puzzles.
           </p>
         </div>
       </section>
@@ -225,9 +226,9 @@ const Home = () => {
               <p>
                 My name is Milos Ristic. I was always interested in computers,
                 for as long as I can remember. It started with playing video
-                games at my uncle's computer to eventually making my own tiny video
-                games, and later moving to web development starting in high
-                school.
+                games at my uncle's computer to eventually making my own tiny
+                video games, and later moving to web development starting in
+                high school.
               </p>
               <p>
                 Now I'm simultaneously attending college, majoring in computer

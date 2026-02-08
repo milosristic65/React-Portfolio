@@ -94,6 +94,12 @@ const ExperienceCard = ({
         )}
       </div>
       <h3 className={styles.position}>{position}</h3>
+      {/* 3 text lines icon */}
+      <div className={styles.textIcon}>
+        <div className={styles.textLine}></div>
+        <div className={styles.textLine}></div>
+        <div className={styles.textLine}></div>
+      </div>
     </div>
   );
 };
