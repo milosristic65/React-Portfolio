@@ -17,7 +17,8 @@ export const SelectStyles: StylesConfig<
     borderColor: state.isFocused ? "#39AC95" : "#182628",
     borderWidth: "0",
     borderRadius: "2px",
-    boxShadow: "0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);",
+    boxShadow:
+      "0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);",
     outline: state.isFocused ? "3px solid #65CCB8" : "none",
     minHeight: "44px",
     transition: "all 0s",
@@ -55,7 +56,11 @@ export const SelectStyles: StylesConfig<
   }),
   option: (base, state) => ({
     ...base,
-    backgroundColor: state.isSelected ? "#39AC95" : "transparent",
+    backgroundColor: state.isSelected
+      ? "#39AC95"
+      : state.isFocused
+        ? "#AFEEE1"
+        : "transparent",
     color: state.isSelected ? "#ffffff" : "#182628",
     borderRadius: "2px",
     padding: "10px 12px",

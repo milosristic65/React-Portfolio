@@ -39,7 +39,9 @@
     border-radius: $input-radius;
     padding: 6px 9px;
     font-weight: inherit;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
@@ -51,8 +53,12 @@
     &.contactButton {
       background-color: $text-color;
       color: $background-color;
-      transition: background-color 0.3s ease, color 0.3s ease,
-        border-radius 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-radius 0.3s ease,
+        filter 0.3s ease,
+        transform 0.3s ease;
 
       @media (hover: hover) and (pointer: fine) {
         &:hover {
@@ -65,19 +71,56 @@
   }
 
   .headerContent {
-    max-width: $header-width;
+    max-width: min($header-width, 100vw);
     height: $header-height;
     padding: 0 20px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    justify-content: flex-start;
     align-items: center;
+
+    .logo {
+      display: flex;
+      height: 60px;
+
+      img {
+        width: 100%;
+        border-radius: $input-radius;
+        transition: filter 0.3s ease;
+        filter: none;
+      }
+
+      &:focus-visible {
+        outline-offset: -8px;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: inherit;
+        }
+      }
+    }
+
+    .skipNavigation {
+      opacity: 0;
+      color: $background-color;
+      background-color: $text-color;
+      border-radius: $input-radius;
+      padding: 6px 9px;
+      pointer-events: none;
+
+      &:focus-visible {
+        opacity: 1;
+      }
+    }
 
     .desktopNav {
       display: flex;
       gap: 15px;
+      margin-left: auto;
 
-      @media (max-width: $mobile) {
+      @media (max-width: $tablet) {
         display: none;
       }
     }
@@ -91,6 +134,7 @@
       height: 30px;
       margin-top: 5px;
       margin-right: 5px;
+      margin-left: auto;
       cursor: pointer;
 
       // Sidebar line
@@ -150,31 +194,13 @@
         }
       }
 
-      @media (max-width: $mobile) {
+      @media (max-width: $tablet) {
         display: block;
       }
     }
 
-    @media (max-width: $mobile) {
+    @media (max-width: $tablet) {
       padding: 0 10px;
-    }
-  }
-
-  .logo {
-    display: flex;
-    height: 60px;
-
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        background-color: inherit;
-      }
-    }
-
-    img {
-      width: 100%;
-      border-radius: $input-radius;
-      transition: filter 0.3s ease;
-      filter: none;
     }
   }
 }
@@ -206,7 +232,9 @@
   z-index: -1;
   padding-top: calc($header-height + 15px);
   background-color: $primary-color;
-  transition: right 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    right 0.3s ease,
+    box-shadow 0.3s ease;
 
   .mobileNav {
     display: flex;
@@ -215,7 +243,8 @@
 
     a {
       font-size: $bigger-normal-text;
-      padding: 15px 30px;
+      margin: 0 20px;
+      padding: 15px 10px;
     }
 
     .contactButton {
@@ -224,7 +253,8 @@
     }
   }
 
-  &.open {
+  &.open,
+  &:has(a:focus-visible) {
     right: 0;
   }
 }

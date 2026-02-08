@@ -173,14 +173,15 @@ const Projects = () => {
                 onChange={onTechnologyChange}
               />
             </div>
-            <div
+            <button
               className={`buttonLink ${styles.buttonLink} ${
                 industryValue || technologyValue ? "" : "hidden"
               }`}
               onClick={clearFilters}
+              disabled={industryValue || technologyValue ? false : true}
             >
               Clear Filters
-            </div>
+            </button>
           </div>
         </div>
         <div

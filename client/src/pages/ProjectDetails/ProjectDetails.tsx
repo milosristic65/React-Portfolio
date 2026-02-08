@@ -14,7 +14,7 @@ Modal.setAppElement("#root");
 import "./CustomModalStyle.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -137,7 +137,7 @@ const ProjectDetails = () => {
       >
         <div className={`content ${styles.content}`}>
           <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, Pagination, Keyboard]}
             slidesPerView={3}
             breakpoints={{
               0: { slidesPerView: 1 },
@@ -150,17 +150,24 @@ const ProjectDetails = () => {
               clickable: true,
               el: ".custom-swiper-pagination",
             }}
+            keyboard={{
+              onlyInViewport: true,
+            }}
           >
             {currentProject?.screenshots.map((screenshot, index) => (
               <SwiperSlide key={index}>
-                <img
-                  src={`${apiUrl}/api/assets/${screenshot}`}
-                  style={{ cursor: "pointer" }}
+                <button
                   onClick={() => {
                     setModalImg(`${apiUrl}/api/assets/${screenshot}`);
                     setModalOpen(true);
                   }}
-                />
+                >
+                  <img
+                    src={`${apiUrl}/api/assets/${screenshot}`}
+                    style={{ cursor: "pointer" }}
+                    alt={`Screenshot ${index + 1}`}
+                  />
+                </button>
               </SwiperSlide>
             ))}
           </Swiper>

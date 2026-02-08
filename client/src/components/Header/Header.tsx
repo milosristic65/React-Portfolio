@@ -54,6 +54,24 @@ const Header = () => {
         <Link to={ROUTES.HOME} className={`${styles.navLink} ${styles.logo}`}>
           <img src={logo} alt="logo" />
         </Link>
+
+        <button
+          className={styles.skipNavigation}
+          onClick={() => {
+            const main = document.querySelector("main");
+            if (main) {
+              const focusable = main.querySelectorAll(
+                'a[href], button:not([disabled]), textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select, [tabindex]:not([tabindex="-1"])',
+              );
+              if (focusable.length > 0) {
+                (focusable[0] as HTMLElement).focus();
+              }
+            }
+          }}
+        >
+          Skip navigation
+        </button>
+
         <nav className={styles.desktopNav}>
           <Link to={ROUTES.HOME} className={styles.navLink}>
             Home
@@ -68,12 +86,14 @@ const Header = () => {
             Get in Contact
           </Link>
         </nav>
+
         <div
           className={`${styles.sidebarToggle} ${
             isSidebarOpen ? styles.open : ""
           }`}
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         ></div>
+
         <div
           className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ""}`}
         >

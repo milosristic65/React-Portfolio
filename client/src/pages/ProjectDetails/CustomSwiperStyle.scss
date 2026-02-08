@@ -3,6 +3,9 @@
 
 .swiper {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.18));
+  padding: 1px;
+  margin-left: -1px;
+  margin-right: -1px;
 
   .swiper-button-next,
   .swiper-button-prev {
@@ -15,6 +18,26 @@
   }
   .swiper-pagination-bullet-active {
     background: $primary-color;
+  }
+
+  button {
+    padding: 0;
+    background: transparent;
+
+    &:hover {
+      background: transparent;
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      img {
+        outline: 1px solid white;
+        box-shadow: 0 0 0 1px black;
+        outline-offset: -2px;
+        border-radius: 4px;
+      }
+    }
   }
 }
 

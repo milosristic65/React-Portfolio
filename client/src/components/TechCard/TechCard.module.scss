@@ -36,6 +36,9 @@ $cardTransiton: 0.3s;
     color: inherit;
     font-weight: inherit;
   }
+  a:focus-visible {
+    outline: none;
+  }
 
   img {
     position: absolute;
@@ -91,26 +94,36 @@ $cardTransiton: 0.3s;
     }
   }
 
-  @media (hover: hover) {
-    &:hover {
-      box-shadow: 0 2px 32px rgba(35, 6, 202, 0.445);
+  @mixin techCardHoverEffect {
+    box-shadow: 0 2px 32px rgba(35, 6, 202, 0.445);
 
-      img {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.6);
-      }
+    img {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.6);
+    }
 
-      .cardContent {
-        transform: scale(1);
-        box-shadow: 0 4px 64px rgba(2, 70, 42, 0.3);
-        opacity: 1;
-      }
+    .cardContent {
+      transform: scale(1);
+      box-shadow: 0 4px 64px rgba(2, 70, 42, 0.3);
+      opacity: 1;
+    }
 
-      .textIcon {
-        .textLine:nth-child(3) {
-          width: 100%;
-        }
+    .textIcon {
+      .textLine:nth-child(3) {
+        width: 100%;
       }
     }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      @include techCardHoverEffect;
+    }
+  }
+
+  &:has(a:focus-visible) {
+    @include techCardHoverEffect;
+    outline: auto;
+    outline-offset: 3px;
   }
 }

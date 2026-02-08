@@ -6,7 +6,9 @@ $projectTitleFontSize: 22px;
   position: relative;
   border-radius: $input-radius;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   a {
     color: inherit;
@@ -37,13 +39,17 @@ $projectTitleFontSize: 22px;
       font-size: $projectTitleFontSize;
       margin-bottom: 5px;
       opacity: 1;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
     }
 
     p {
       opacity: 0;
       padding-right: 10px;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
     }
 
     &::before {
@@ -57,25 +63,35 @@ $projectTitleFontSize: 22px;
     }
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      transform: scale(1.02);
+  @mixin projectCardHoverEffect {
+    transform: scale(1.02);
 
-      a {
-        color: inherit;
+    a {
+      color: inherit;
+    }
+
+    .projectInfo {
+      transform: translateY(0);
+
+      p {
+        opacity: 1;
       }
 
-      .projectInfo {
-        transform: translateY(0);
-
-        p {
-          opacity: 1;
-        }
-
-        &::before {
-          background-color: rgba($primary-color, 1);
-        }
+      &::before {
+        background-color: rgba($primary-color, 1);
       }
     }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @include projectCardHoverEffect;
+    }
+  }
+
+  &:has(a:focus-visible) {
+    @include projectCardHoverEffect;
+    outline: auto;
+    outline-offset: 3px;
   }
 }

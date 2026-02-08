@@ -94,7 +94,14 @@ button,
   cursor: pointer;
   border: none;
   opacity: 1;
-  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    opacity 0.2s ease;
+
+  &:focus-visible {
+    outline-offset: 2px;
+  }
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
@@ -110,5 +117,5 @@ button,
 
 // Fade-in animation for dynamic elements
 .loadFade {
-  transition: opacity 0.7s; 
+  transition: opacity 0.7s;
 }

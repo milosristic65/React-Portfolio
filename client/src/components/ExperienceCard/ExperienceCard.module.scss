@@ -123,7 +123,8 @@
       }
     }
 
-    &:hover {
+    &:hover,
+    &:has(a:focus-visible) {
       .logo {
         top: 25px;
         transform: translateY(0);
