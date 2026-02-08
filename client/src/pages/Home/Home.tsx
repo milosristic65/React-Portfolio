@@ -139,13 +139,12 @@ const Home = () => {
         <div className={`content ${styles.content}`}>
           <h2>What I Do</h2>
           <p>
-            I focus on <span className="highlight">backend logic</span>,{" "}
-            <span className="highlight"> data modeling</span>, and building
-            maintainable systems, while also creating{" "}
-            <span className="highlight"> modern, responsive frontends</span> and
-            integration layers to deliver complete solutions. By day I work on
-            production systems, and in my free time I explore creativity through{" "}
-            game development.
+            Focusing on <span className="highlight">backend logic</span>,{" "}
+            <span className="highlight">data modeling</span>, and building
+            maintainable systems while also creating{" "}
+            <span className="highlight">modern, responsive frontends</span> that
+            connect everything into complete, polished solutions. I genuinely
+            enjoy solving programming challenges like puzzles.
           </p>
         </div>
       </section>
