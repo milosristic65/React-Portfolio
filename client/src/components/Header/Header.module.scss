@@ -272,7 +272,7 @@
   transition: opacity 0.3s ease;
 }
 
-@media (max-width: $mobile) {
+@media (max-width: $tablet) {
   .sidebar {
     display: block;
   }
