@@ -5,6 +5,10 @@
   .modalContent {
     transform: scale(0.95);
     transition: transform 0.2s ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
+    }
   }
 }
 .ReactModal__Overlay--after-open {
@@ -19,5 +23,9 @@
 
   .modalContent {
     transform: scale(0.95);
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
+    }
   }
 }
