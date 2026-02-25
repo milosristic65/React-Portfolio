@@ -84,6 +84,7 @@ const ExperienceCard = ({
                   <img
                     src={`${apiUrl}/api/assets/${project.thumbnail}`}
                     alt={project.title}
+                    title={project.title}
                   />
                 </Link>
               </div>
