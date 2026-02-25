@@ -51,6 +51,10 @@ $cardTransiton: 0.3s;
     transition:
       opacity $cardTransiton ease-in-out,
       transform $cardTransiton ease-in-out;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 
   .cardContent {
@@ -67,6 +71,10 @@ $cardTransiton: 0.3s;
       opacity $cardTransiton ease-in-out,
       transform $cardTransiton ease-in-out,
       box-shadow $cardTransiton ease-in-out;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 
   .textIcon {
@@ -91,6 +99,10 @@ $cardTransiton: 0.3s;
       &:nth-child(3) {
         width: 40%;
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
     }
   }
 
@@ -100,6 +112,10 @@ $cardTransiton: 0.3s;
     img {
       opacity: 0;
       transform: translate(-50%, -50%) scale(0.6);
+
+      @media (prefers-reduced-motion: reduce) {
+        transform: translate(-50%, -50%);
+      }
     }
 
     .cardContent {

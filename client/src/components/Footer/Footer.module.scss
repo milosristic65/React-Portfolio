@@ -116,9 +116,9 @@ footer {
     }
   }
 
-  @media (max-width: $mobile) {
+  @media (max-width: $mobile), (prefers-reduced-motion: reduce) {
     .footerInside {
-      transition: 0;
+      transition: none;
       opacity: 1;
       transform: translateY(0);
     }

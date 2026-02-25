@@ -15,6 +15,7 @@ export interface WireframeRendererOptions {
   zoomable?: boolean;
   autoRotate?: boolean;
   rotationSpeed?: number;
+  inertia?: boolean;
   faceOpacity?: number;
   lineWidth?: number;
   renderVertices?: boolean;
@@ -48,6 +49,7 @@ export class WireframeRenderer {
   zoomable: boolean;
   autoRotate: boolean;
   rotationSpeed: number;
+  inertia: boolean;
   faceOpacity: number;
   lineWidth: number;
   renderVertices: boolean;

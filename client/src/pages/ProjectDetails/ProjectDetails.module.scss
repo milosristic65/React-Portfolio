@@ -44,6 +44,10 @@
 
     &.loaded .bannerHero {
       animation: bannerSlideIn 0.6s ease forwards;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: bannerSlideIn 0s forwards;
+      }
     }
   }
 

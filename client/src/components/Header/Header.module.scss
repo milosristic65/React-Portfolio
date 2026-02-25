@@ -65,6 +65,10 @@
           transform: scale(1.05);
           background-color: color.adjust($color: $text-color, $lightness: 5%);
           filter: $div-shadow;
+
+          @media (prefers-reduced-motion: reduce) {
+            transform: none;
+          }
         }
       }
     }

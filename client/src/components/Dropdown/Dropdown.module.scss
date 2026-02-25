@@ -1,6 +1,10 @@
 .dropdownMenu {
   transform-origin: top;
   animation: dropdownOpen 0.2s ease-in-out forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 }
 
 @keyframes dropdownOpen {

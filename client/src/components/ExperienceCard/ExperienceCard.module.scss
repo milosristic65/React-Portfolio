@@ -15,6 +15,10 @@
   overflow: hidden;
   transition: aspect-ratio 0.3s ease;
 
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
   .logo {
     position: absolute;
     top: 20px;
@@ -41,12 +45,14 @@
         width: 100%;
         height: auto;
         border-radius: $input-radius;
-        transition:
-          transform 0.2s ease,
-          filter 0.2s ease;
+        transition: transform 0.2s ease;
 
         &:hover {
           transform: scale(1.05);
+
+          @media (prefers-reduced-motion: reduce) {
+            transform: none;
+          }
         }
       }
     }
@@ -77,9 +83,18 @@
       top: 50%;
       transform: translateY(-50%);
       transition: all 0.3s ease;
+
       img {
         height: 60px;
         transition: all 0.125s ease;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        img {
+          transition: none;
+        }
       }
     }
 
@@ -87,6 +102,10 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease 0s;
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
     }
 
     .position {
@@ -95,6 +114,10 @@
       transition:
         opacity 0.3s ease,
         transform 0.3s ease;
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: opacity 0.3s ease;
+      }
     }
 
     .textIcon {
@@ -120,6 +143,10 @@
         &:nth-child(3) {
           width: 40%;
         }
+
+        @media (prefers-reduced-motion: reduce) {
+          transition: none;
+        }
       }
     }
 
@@ -139,6 +166,10 @@
         opacity: 1;
         pointer-events: all;
         transition: opacity 0.3s ease 0.125s;
+
+        @media (prefers-reduced-motion: reduce) {
+          transition: none;
+        }
       }
 
       .position {

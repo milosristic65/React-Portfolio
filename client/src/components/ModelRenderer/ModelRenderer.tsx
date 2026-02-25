@@ -19,18 +19,22 @@ const ModelRenderer = () => {
 
   useEffect(() => {
     if (!canvasRef.current) return;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     const viewer = new WireframeRenderer(canvasRef.current, {
       coordinates: { x: 0, y: 0, z: 2 },
       projection: PROJECTION.PERSPECTIVE,
       draggable: !isWeakDevice,
-      autoRotate: !isWeakDevice,
+      autoRotate: !isWeakDevice && !prefersReducedMotion,
       lineWidth: 2,
       faceOpacity: 0.4,
       renderVertices: true,
       renderEdges: true,
       vertexSize: 8,
       rotationSpeed: 1,
+      inertia: !prefersReducedMotion,
       farClip: 10,
       nearClip: 0.1,
       background: "transparent",

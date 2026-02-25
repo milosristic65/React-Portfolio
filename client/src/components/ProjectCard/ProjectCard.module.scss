@@ -6,9 +6,7 @@ $projectTitleFontSize: 22px;
   position: relative;
   border-radius: $input-radius;
   overflow: hidden;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 
   a {
     color: inherit;
@@ -61,6 +59,15 @@ $projectTitleFontSize: 22px;
       transform: rotate(-2deg);
       transition: background-color 0.3s ease;
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+
+      h3,
+      p {
+        transition: none;
+      }
+    }
   }
 
   @mixin projectCardHoverEffect {
@@ -80,6 +87,10 @@ $projectTitleFontSize: 22px;
       &::before {
         background-color: rgba($primary-color, 1);
       }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
     }
   }
 

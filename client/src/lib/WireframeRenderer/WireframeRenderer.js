@@ -31,6 +31,7 @@ export class WireframeRenderer {
     this.zoomable = options.zoomable || false;
     this.autoRotate = options.autoRotate || false;
     this.rotationSpeed = options.rotationSpeed ?? 1;
+    this.inertia = options.inertia ?? true;
     this.faceOpacity = options.faceOpacity || 0;
     this.lineWidth = options.lineWidth || 1;
     this.renderVertices = options.renderVertices || false;
@@ -293,7 +294,7 @@ export class WireframeRenderer {
     this._clearCanvas();
 
     // Rotation inertia
-    if (!this.state.isDragging) {
+    if (!this.state.isDragging && this.inertia) {
       this.state.rotationX += this.state.velocityX;
       this.state.rotationY += this.state.velocityY;
       this.state.velocityX *= 0.95;

@@ -2,18 +2,24 @@ import { useEffect, useRef } from "react";
 
 export const useParallax = (speed: number) => {
   const ref = useRef<HTMLDivElement>(null);
-  
+
   const targetY = useRef(0);
   const currentY = useRef(0);
   const animationFrameID = useRef<number | null>(null);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if(prefersReducedMotion) return;
+
     const onScroll = () => {
       targetY.current = window.scrollY * speed;
     };
 
     const animate = () => {
-      currentY.current += (targetY.current - currentY.current);
+      currentY.current += targetY.current - currentY.current;
 
       if (ref.current) {
         ref.current.style.transform = `translateY(${currentY.current}px)`;
