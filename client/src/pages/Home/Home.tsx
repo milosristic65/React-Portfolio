@@ -182,6 +182,7 @@ const Home = () => {
               .filter((project) => project.featured === true)
               .map((project) => (
                 <ProjectCard
+                  key={project.title}
                   title={project.title}
                   snippet={project.snippet}
                   thumbnail={`${apiUrl}/api/assets/${project.thumbnail}`}
