@@ -56,5 +56,23 @@
     "projectUrl": "https://taglientgames.com",
     "githubUrl": "https://github.com/milosristic65/TaglientGames",
     "featured": true
+  },
+  {
+    "title": "Game Tracker",
+    "snippet": "Game playtime tracking app.",
+    "challenge": "Not all video games have <b>playtime tracking</b> feature and some of them are also on launchers that don't support this feature. With some games you just can't know how long have you played them.",
+    "solution": "I made a <b>.NET Windows Forms</b> app that stays running in the background and keeps tracking playtime of your video games. You can track all of your games in a <b>single place</b> for all games you play.",
+    "thumbnail": "projects/gametracker/thumbnail.webp",
+    "screenshots": [
+      "projects/gametracker/screenshot_1.webp",
+      "projects/gametracker/screenshot_2.webp",
+      "projects/gametracker/screenshot_3.webp",
+      "projects/gametracker/screenshot_4.webp"
+    ],
+    "technologies": ["dotnet"],
+    "industries": ["entertainment"],
+    "projectUrl": "https://github.com/milosristic65/GameTracker/releases/tag/alpha",
+    "githubUrl": "https://github.com/milosristic65/GameTracker",
+    "featured": false
   }
 ]
