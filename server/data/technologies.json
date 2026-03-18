@@ -18,12 +18,6 @@
     "color": "cyan"
   },
   {
-    "name": "Next.js",
-    "value": "nextjs",
-    "icon": "tech-stack/nextjs.svg",
-    "color": "black"
-  },
-  {
     "name": "jQuery",
     "value": "jquery",
     "icon": "tech-stack/jquery.svg",
@@ -49,10 +43,5 @@
     "name": "MySQL",
     "value": "mysql",
     "icon": "tech-stack/mysql.svg"
-  },
-  {
-    "name": "Microsoft SQL Server",
-    "value": "mssql",
-    "icon": "tech-stack/mssql.svg"
   }
 ]
