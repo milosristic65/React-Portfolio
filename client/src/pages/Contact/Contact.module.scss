@@ -45,7 +45,7 @@
         left: -65%;
         right: -200%;
         bottom: -100%;
-        background-color: $primary-color;
+        background-color: $foreground-color;
         z-index: 0;
       }
 
@@ -120,7 +120,7 @@
         left: 0;
         transform: rotate(-1deg);
         z-index: -1;
-        background-color: $primary-color;
+        background-color: $foreground-color;
       }
 
       button {

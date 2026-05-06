@@ -29,14 +29,14 @@ main {
 }
 
 a {
-  color: $primary-color;
+  color: $foreground-color;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      color: color.adjust($color: $primary-color, $lightness: -20%);
+      color: color.adjust($color: $foreground-color, $lightness: -20%);
     }
   }
 }
@@ -80,7 +80,7 @@ a {
 }
 
 .highlight {
-  color: $primary-color;
+  color: $foreground-color;
   font-weight: bold;
 }
 
@@ -88,7 +88,7 @@ button,
 .buttonLink {
   display: inline-block;
   padding: 10px 16px;
-  background-color: $primary-color;
+  background-color: $foreground-color;
   color: $background-color;
   border-radius: $input-radius;
   cursor: pointer;
@@ -105,7 +105,7 @@ button,
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background-color: color.adjust($color: $primary-color, $lightness: -15%);
+      background-color: color.adjust($color: $foreground-color, $lightness: -15%);
     }
   }
 }

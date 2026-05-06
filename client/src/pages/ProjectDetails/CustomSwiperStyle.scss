@@ -9,7 +9,7 @@
 
   .swiper-button-next,
   .swiper-button-prev {
-    color: $primary-color;
+    color: $foreground-color;
   }
 
   .swiper-pagination-bullet {
@@ -17,7 +17,7 @@
     border-radius: $input-radius;
   }
   .swiper-pagination-bullet-active {
-    background: $primary-color;
+    background: $foreground-color;
   }
 
   button {
@@ -54,7 +54,7 @@
     margin: 0 4px;
     opacity: 0.2;
     &.swiper-pagination-bullet-active {
-      background: $primary-color;
+      background: $foreground-color;
       opacity: 1;
     }
   }

@@ -15,7 +15,7 @@
     left: -5px;
     right: -5px;
     bottom: -10px;
-    background-color: $primary-color;
+    background-color: $foreground-color;
     transform: rotate(-0.5deg);
     z-index: -1;
     // animation: wobble 6s ease-in-out infinite;
@@ -175,7 +175,7 @@
         // Close arrow
         &::after {
           right: 2.5px;
-          border-color: $primary-color;
+          border-color: $foreground-color;
           transform: translateY(-50%) rotate(225deg);
         }
       }
@@ -193,7 +193,7 @@
           }
 
           &.open::after {
-            border-color: $primary-color;
+            border-color: $foreground-color;
           }
         }
       }
@@ -235,7 +235,7 @@
   height: 100vh;
   z-index: -1;
   padding-top: calc($header-height + 15px);
-  background-color: $primary-color;
+  background-color: $foreground-color;
   transition:
     right 0.3s ease,
     box-shadow 0.3s ease;

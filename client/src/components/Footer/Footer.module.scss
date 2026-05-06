@@ -51,12 +51,12 @@ footer {
     z-index: -2;
 
     &::before {
-      background-color: $primary-color;
+      background-color: $foreground-color;
       filter: none;
     }
 
     .footerBackground {
-      background-color: $primary-color;
+      background-color: $foreground-color;
     }
   }
 

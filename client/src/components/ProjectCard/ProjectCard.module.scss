@@ -55,7 +55,7 @@ $projectTitleFontSize: 22px;
       position: absolute;
       inset: -10px;
       top: -5px;
-      background-color: rgba($primary-color, 0.9);
+      background-color: rgba($foreground-color, 0.9);
       transform: rotate(-2deg);
       transition: background-color 0.3s ease;
     }
@@ -85,7 +85,7 @@ $projectTitleFontSize: 22px;
       }
 
       &::before {
-        background-color: rgba($primary-color, 1);
+        background-color: rgba($foreground-color, 1);
       }
     }
 

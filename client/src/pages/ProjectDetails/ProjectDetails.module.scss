@@ -15,7 +15,7 @@
     padding-top: 1%;
 
     h1 {
-      color: $primary-color;
+      color: $foreground-color;
     }
 
     * {
@@ -91,7 +91,7 @@
 
   p {
     b {
-      color: $primary-color;
+      color: $foreground-color;
       font-weight: bold;
     }
   }
@@ -102,7 +102,7 @@
     display: inline-block;
     padding: 5px;
     color: $background-color;
-    background-color: $primary-color;
+    background-color: $foreground-color;
     border-radius: $input-radius;
   }
 }
