@@ -73,12 +73,14 @@ const ProjectDetails = () => {
     return <NotFound />;
   }
 
+  useEffect(() => {
+    document.title = `Milos Ristic ${
+      currentProject ? `| ${currentProject.title}` : ""
+    }`;
+  }, [currentProject]);
+
   return (
     <div className={styles.projectDetails}>
-      <title>{`Milos Ristic ${
-        currentProject ? `| ${currentProject.title}` : ""
-      }`}</title>
-
       <div className={`banner ${styles.banner}`}>
         <div
           className={`bannerText ${styles.bannerText} loadFade`}

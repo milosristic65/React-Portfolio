@@ -91,10 +91,12 @@ const Home = () => {
       });
   }, [apiUrl]);
 
+  useEffect(() => {
+    document.title = "Milos Ristic";
+  }, []);
+
   return (
     <div className={styles.home}>
-      <title>Milos Ristic</title>
-
       <div ref={callToActionRef} className={`banner ${styles.banner}`}>
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Milos Ristic</h1>
@@ -221,7 +223,10 @@ const Home = () => {
         <div className={`content ${styles.content}`}>
           <h2>Who Am I</h2>
           <div className={styles.contentBackground}>
-            <img src={portrait} alt="Portrait of Milos Ristic leaning on a railing" />
+            <img
+              src={portrait}
+              alt="Portrait of Milos Ristic leaning on a railing"
+            />
             <div>
               <h3>I'm a programmer</h3>
               <p>

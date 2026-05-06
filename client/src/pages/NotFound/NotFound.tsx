@@ -1,10 +1,13 @@
 import styles from "./NotFound.module.scss";
+import { useEffect } from "react";
 
 const NotFound = () => {
+  useEffect(() => {
+    document.title = "Milos Ristic | 404 Not Found";
+  }, []);
+
   return (
     <div className={styles.notFound}>
-      <title>Milos Ristic | 404 Not Found</title>
-      
       <div className={`content ${styles.content}`}>
         <h1>
           <span className="highlight">404</span> Not Found

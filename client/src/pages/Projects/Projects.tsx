@@ -130,10 +130,12 @@ const Projects = () => {
         : project.industries.includes(industryValue?.value ?? "")),
   );
 
+  useEffect(() => {
+    document.title = "Milos Ristic | Projects";
+  }, []);
+
   return (
     <div className={styles.projects}>
-      <title>Milos Ristic | Projects</title>
-
       <div className={`banner ${styles.banner}`}>
         <div className={`bannerText ${styles.bannerText}`}>
           <h1>Projects</h1>
