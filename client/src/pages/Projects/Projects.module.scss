@@ -2,8 +2,8 @@
 @use "sass:color";
 
 .projects .banner {
-  background-color: $text-color;
-  color: $background-color;
+  background-color: var(--color-banner);
+  color: var(--color-banner-foreground);
   position: relative;
   height: 50vh;
 
@@ -53,7 +53,7 @@
         left: -100%;
         right: -200%;
         bottom: -100%;
-        background-color: $foreground-color;
+        background-color: var(--primary-color);
         z-index: 0;
         transform: rotate(-60deg);
       }
@@ -102,7 +102,7 @@
 }
 
 .projectsGrid {
-  color: $text-color;
+  color: var(--text-color);
   margin-top: 15px;
   margin-bottom: 15px;
   display: grid;
@@ -111,7 +111,7 @@
 
   // Project Cards
   & > * {
-    box-shadow: $natural-box-shadow;
+    box-shadow: var(--natural-box-shadow);
     animation: fadeInUp 0.5s ease;
 
     @media (prefers-reduced-motion: reduce) {
@@ -155,7 +155,7 @@
   gap: 25px;
   align-items: center;
   padding-bottom: 30px;
-  border-bottom: 1px solid $text-color;
+  border-bottom: 1px solid var(--background-color-inverse);
 
   span {
     font-size: 1.5rem;
@@ -173,10 +173,14 @@
   }
 
   .buttonLink {
-    background-color: $text-color;
+    background-color: var(--background-color-inverse);
 
     &:hover {
-      background-color: color.adjust($color: $text-color, $lightness: 15%);
+      background-color: color-mix(
+        in srgb,
+        var(--background-color-inverse) 85%,
+        white
+      );
     }
 
     &.hidden {

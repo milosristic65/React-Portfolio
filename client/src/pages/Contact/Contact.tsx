@@ -4,8 +4,13 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 
 import { useEffect } from "react";
 import { useParallax } from "../../hooks/useParallax";
+import { Theme } from "../../enums/theme";
 
-const Contact = () => {
+type ContactProps = {
+  theme?: Theme;
+};
+
+const Contact = ({ theme }: ContactProps) => {
   const bannerBackgroundRef = useParallax(0.2);
 
   useEffect(() => {
@@ -47,7 +52,7 @@ const Contact = () => {
               free to reach out anytime.
             </p>
           </div>
-          <ContactForm className={styles.contactForm} />
+          <ContactForm className={styles.contactForm} theme={theme} />
         </div>
       </section>
     </div>

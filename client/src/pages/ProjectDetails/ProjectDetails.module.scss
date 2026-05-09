@@ -2,8 +2,8 @@
 @use "sass:color";
 
 .projectDetails .banner {
-  background-color: $text-color;
-  color: $background-color;
+  background-color: var(--color-banner);
+  color: var(--color-banner-foreground);
   position: relative;
   height: 50vh;
 
@@ -15,7 +15,7 @@
     padding-top: 1%;
 
     h1 {
-      color: $foreground-color;
+      color: var(--primary-color);
     }
 
     * {
@@ -84,14 +84,14 @@
   h2 {
     display: inline-block;
     padding: 5px;
-    color: $background-color;
-    background-color: $text-color;
+    color: var(--text-color-inverse);
+    background-color: var(--background-color-inverse);
     border-radius: $input-radius;
   }
 
   p {
     b {
-      color: $foreground-color;
+      color: var(--primary-color);
       font-weight: bold;
     }
   }
@@ -101,8 +101,8 @@
   h2 {
     display: inline-block;
     padding: 5px;
-    color: $background-color;
-    background-color: $foreground-color;
+    color: var(--text-color-inverse);
+    background-color: var(--primary-color);
     border-radius: $input-radius;
   }
 }

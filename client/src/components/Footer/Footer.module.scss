@@ -1,9 +1,31 @@
 @use "../../styles/variables" as *;
 @use "sass:color";
 
+:global(.dark) footer {
+  .footerRotatedBackground {
+    &::before {
+      background-color: var(--accent-color);
+    }
+  }
+
+  .footerPlaceholder {
+    &::before {
+      background-color: var(--primary-color);
+    }
+
+    .footerBackground {
+      background-color: var(--primary-color);
+    }
+  }
+
+  .footerBackground {
+    background-color: var(--accent-color);
+  }
+}
+
 footer {
   position: relative;
-  color: $background-color;
+  color: var(--color-banner-foreground);
   margin-top: 100px;
   overflow: hidden;
 
@@ -12,7 +34,7 @@ footer {
   }
 
   .footerBackground {
-    background-color: $text-color;
+    background-color: var(--color-banner);
     position: absolute;
     width: 100%;
     height: 50%;
@@ -35,8 +57,8 @@ footer {
       top: 40px;
       left: -40px;
       right: -40px;
-      bottom: 0;
-      background-color: $text-color;
+      bottom: -40px;
+      background-color: var(--color-banner);
       transform: rotate(1deg);
       z-index: -1;
       filter: drop-shadow(2px 1px 10px rgba(0, 0, 0, 0.15));
@@ -51,12 +73,12 @@ footer {
     z-index: -2;
 
     &::before {
-      background-color: $foreground-color;
+      background-color: var(--primary-color);
       filter: none;
     }
 
     .footerBackground {
-      background-color: $foreground-color;
+      background-color: var(--primary-color);
     }
   }
 
@@ -112,7 +134,7 @@ footer {
   &.visible {
     .footerInside {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(-1px);
     }
   }
 

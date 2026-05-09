@@ -7,6 +7,7 @@
       "end": null
     },
     "logo": "/companies/fermicoding.svg",
+    "logoDark": "/companies/dark/fermicoding.svg",
     "url": "https://www.fermicoding.com",
     "relatedProjects": ["Easy Kitchen Lab", "Fermicoding"]
   },
@@ -18,6 +19,7 @@
       "end": "2025-01-31"
     },
     "logo": "/companies/luxoft.svg",
+    "logoDark": "/companies/dark/luxoft.svg",
     "url": "https://www.luxoft.com"
   },
   {
@@ -28,6 +30,7 @@
       "end": "2023-07-28"
     },
     "logo": "/companies/present.svg",
+    "logoDark": "/companies/dark/present.svg",
     "url": "https://www.studiopresent.com"
   }
 ]

@@ -2,8 +2,8 @@
 @use "sass:color";
 
 .banner {
-  background-color: $text-color;
-  color: $background-color;
+  background-color: var(--color-banner);
+  color: var(--color-banner-foreground);
   position: relative;
 
   .bannerText {
@@ -49,7 +49,7 @@
         left: 45%;
         right: 0;
         bottom: 0;
-        background-color: $foreground-color;
+        background-color: var(--primary-color);
         z-index: 0;
       }
 
@@ -101,7 +101,7 @@
     $scrollAnimationLength: 2s;
     $scrollAnimationDelay: 0.5s;
     .scrollDown {
-      border: 5px solid $background-color;
+      border: 5px solid var(--color-banner-foreground);
       width: 100%;
       height: 100%;
       border-radius: 16px;
@@ -111,7 +111,7 @@
         position: relative;
         margin: auto;
         border-radius: 16px;
-        background-color: $background-color;
+        background-color: var(--color-banner-foreground);
         height: 12px;
         width: 6px;
         transform: translateY(5px);
@@ -151,7 +151,7 @@
       .dot {
         width: $dotSize;
         height: $dotSize;
-        background-color: $background-color;
+        background-color: var(--color-banner-foreground);
         border-radius: $swipeHeight;
         opacity: 0;
         animation: swipeAnim $swipeAnimationLength $swipeAnimationDelay infinite;
@@ -167,7 +167,7 @@
           width: $dotSize;
           height: $dotSize;
           border-radius: $swipeHeight;
-          background-color: $background-color;
+          background-color: var(--color-banner-foreground);
           opacity: 0;
           animation: trailAnim $swipeAnimationLength $swipeAnimationDelay
             infinite;
@@ -284,8 +284,8 @@
   h2 {
     display: inline-block;
     padding: 5px;
-    color: $background-color;
-    background-color: $text-color;
+    color: var(--text-color-inverse);
+    background-color: var(--background-color-inverse);
     border-radius: $input-radius;
   }
 
@@ -300,8 +300,8 @@
   h2 {
     display: inline-block;
     padding: 5px;
-    color: $background-color;
-    background-color: $foreground-color;
+    color: var(--text-color-inverse);
+    background-color: var(--primary-color);
     border-radius: $input-radius;
   }
 
@@ -323,14 +323,13 @@
 }
 
 .featuredProjectsSection {
-  background-color: $text-color;
-  color: $background-color;
+  background-color: var(--background-color-inverse);
+  color: var(--text-color);
 
   h2 {
     position: relative;
     display: inline-block;
     padding: 5px;
-    color: $text-color;
     background-color: transparent; // Remove static background
     border-radius: $input-radius;
     overflow: hidden;
@@ -344,7 +343,7 @@
       top: 0;
       height: 100%;
       width: 0;
-      background-color: $foreground-color;
+      background-color: var(--primary-color);
       border-radius: $input-radius;
       z-index: -1;
       transition: none;
@@ -370,8 +369,8 @@
   }
 
   .buttonLink {
+    color: var(--text-color);
     margin-top: 15px;
-    color: $text-color;
     font-weight: inherit;
 
     &:hover {
@@ -400,20 +399,50 @@
   }
 }
 
+:global(.dark) .featuredProjectsSection {
+  background-color: var(--accent-color);
+
+  h2 {
+    color: var(--accent-color);
+    transition: color 0.5s 0.4s ease-out;
+  }
+
+  // Animated text color
+  &.visible {
+    h2 {
+      color: var(--text-color-inverse);
+    }
+  }
+
+  .buttonLink {
+    color: var(--text-color-inverse);
+  }
+}
+
+:global(.dark) .experienceSection {
+  .experienceList .experienceCard {
+    &:first-child {
+      h3 {
+        color: var(--text-color-inverse);
+      }
+    }
+  }
+}
+
 .experienceSection {
   position: relative;
 
   h2 {
     display: inline-block;
     padding: 5px;
-    color: $background-color;
-    background-color: $foreground-color;
+    color: var(--text-color-inverse);
+    background-color: var(--primary-color);
     border-radius: $input-radius;
   }
 
   .buttonLink {
     position: absolute;
-    background-color: $text-color;
+    background-color: var(--background-color-inverse);
     z-index: 2;
     transition:
       background-color 0.3s ease,
@@ -422,7 +451,11 @@
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        background-color: color.adjust($color: $text-color, $lightness: 15%);
+        background-color: color-mix(
+          in srgb,
+          var(--background-color-inverse) 85%,
+          white
+        );
       }
     }
   }
@@ -436,8 +469,8 @@
     .experienceCard {
       &:first-child {
         h3 {
-          background-color: $foreground-color;
-          color: $text-color;
+          background-color: var(--primary-color);
+          color: var(--text-color);
         }
       }
     }
@@ -451,18 +484,32 @@
   }
 }
 
+:global(.dark) .whoAmISection {
+  .contentBackground {
+    color: var(--text-color);
+
+    h3 {
+      color: var(--text-color-inverse);
+    }
+
+    &::after {
+      background-color: var(--accent-color);
+    }
+  }
+}
+
 .whoAmISection {
   h2 {
     display: inline-block;
     padding: 5px;
-    color: $background-color;
-    background-color: $text-color;
+    color: var(--text-color-inverse);
+    background-color: var(--background-color-inverse);
     border-radius: $input-radius;
   }
 
   .contentBackground {
     position: relative;
-    color: $background-color;
+    color: var(--text-color-inverse);
     background-color: transparent;
     font-size: $bigger-normal-text;
     padding: 30px;
@@ -471,8 +518,8 @@
     border-radius: $input-radius;
 
     h3 {
-      color: $text-color;
-      background-color: $foreground-color;
+      color: var(--text-color);
+      background-color: var(--primary-color);
       display: inline-block;
       padding: 5px;
       border-radius: $input-radius;
@@ -494,7 +541,7 @@
       left: 0;
       transform: rotate(-1deg);
       z-index: -1;
-      background-color: $text-color;
+      background-color: var(--background-color-inverse);
     }
 
     @media (max-width: $tablet) {

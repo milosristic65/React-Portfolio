@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ModelRenderer from "../../components/ModelRenderer/ModelRenderer";
 
 import { ROUTES } from "../../config/routes";
+import { Theme } from "../../enums/theme";
 
 import reactLogo from "../../assets/TechStack/react.svg";
 import dotnetLogo from "../../assets/TechStack/dotnet.svg";
@@ -21,7 +22,11 @@ import { type Project } from "../../types/project";
 import { type Experience } from "../../types/experience";
 import { type Technology } from "../../types/technology";
 
-const Home = () => {
+type HomeProps = {
+  theme: Theme;
+};
+
+const Home = ({ theme }: HomeProps) => {
   const apiUrl = import.meta.env.VITE_API_URL || "";
 
   // Banner //
@@ -212,7 +217,7 @@ const Home = () => {
                   index === 0 ? styles.lastExperience : ""
                 }`}
               >
-                <ExperienceCard {...experience} />
+                <ExperienceCard theme={theme} {...experience} />
               </div>
             ))}
           </div>

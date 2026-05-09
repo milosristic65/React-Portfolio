@@ -2,8 +2,8 @@
 @use "sass:color";
 
 .contact .banner {
-  background-color: $text-color;
-  color: $background-color;
+  background-color: var(--color-banner);
+  color: var(--color-banner-foreground);
   position: relative;
   height: 50vh;
 
@@ -45,7 +45,7 @@
         left: -65%;
         right: -200%;
         bottom: -100%;
-        background-color: $foreground-color;
+        background-color: var(--primary-color);
         z-index: 0;
       }
 
@@ -92,6 +92,25 @@
   }
 }
 
+:global(.dark) .contactFormSection {
+  .content .contactForm {
+    button {
+      color: var(--text-color);
+      background-color: var(--background-color);
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: color-mix(
+            in srgb,
+            var(--background-color) 85%,
+            white
+          );
+        }
+      }
+    }
+  }
+}
+
 .contactFormSection {
   .contactText {
     p {
@@ -120,26 +139,26 @@
         left: 0;
         transform: rotate(-1deg);
         z-index: -1;
-        background-color: $foreground-color;
+        background-color: var(--primary-color);
       }
 
       button {
-        background-color: $text-color;
+        background-color: var(--background-color-inverse);
 
         @media (hover: hover) and (pointer: fine) {
           &:hover {
-            background-color: color.adjust(
-              $color: $text-color,
-              $lightness: 15%
+            background-color: color-mix(
+              in srgb,
+              var(--background-color-inverse) 85%,
+              white
             );
           }
         }
       }
       input,
       textarea {
-        background-color: $accent-color;
         &:focus {
-          outline: 3px solid $text-color;
+          outline: 3px solid var(--background-color-inverse);
         }
       }
 

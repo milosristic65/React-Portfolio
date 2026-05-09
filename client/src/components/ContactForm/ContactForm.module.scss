@@ -24,6 +24,8 @@
 
   input,
   textarea {
+    color: var(--text-color);
+    background-color: var(--background-color);
     border-radius: $input-radius;
     border: none;
     padding: 10px;
@@ -32,11 +34,13 @@
     font-family: inherit;
 
     &::placeholder {
+      opacity: 0.6;
+      color: var(--text-color);
       font-weight: bold;
     }
 
     &:focus {
-      outline: 3px solid $foreground-color;
+      outline: 3px solid var(--primary-color);
     }
   }
 
@@ -90,7 +94,7 @@
     }
 
     .error {
-      color: $error-color;
+      color: var(--error-color);
     }
   }
 }

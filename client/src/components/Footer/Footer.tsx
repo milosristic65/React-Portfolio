@@ -4,10 +4,15 @@ import { useInViewAnimation } from "../../hooks/useInViewAnimation";
 import { type Social } from "../../types/social";
 import { ROUTES } from "../../config/routes";
 import { useLocation } from "react-router-dom";
+import { Theme } from "../../enums/theme";
 
 import ContactForm from "../ContactForm/ContactForm";
 
-const Footer = () => {
+type FooterProps = {
+  theme?: Theme;
+};
+
+const Footer = ({ theme }: FooterProps) => {
   const apiUrl = import.meta.env.VITE_API_URL || "";
 
   const footerRef = useInViewAnimation(styles.visible, 0.3);
@@ -42,7 +47,7 @@ const Footer = () => {
                   Let's Talk :)
                 </strong>
               </h2>
-              <ContactForm className={styles.contactForm} />
+              <ContactForm className={styles.contactForm} theme={theme} />
             </>
           )}
 

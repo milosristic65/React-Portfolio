@@ -1,12 +1,30 @@
 @use "../../styles/variables" as *;
 @use "sass:color";
 
+:global(.dark) .header {
+  a.contactButton {
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--background-color) 95%,
+          white
+        );
+        filter: var(--div-shadow);
+      }
+    }
+  }
+}
+
 .header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10;
-  color: $background-color;
+  color: var(--text-color-inverse);
 
   &::before {
     content: "";
@@ -15,7 +33,7 @@
     left: -5px;
     right: -5px;
     bottom: -10px;
-    background-color: $foreground-color;
+    background-color: var(--primary-color);
     transform: rotate(-0.5deg);
     z-index: -1;
     // animation: wobble 6s ease-in-out infinite;
@@ -34,7 +52,7 @@
   }
 
   a {
-    color: $background-color;
+    color: var(--text-color-inverse);
     text-decoration: none;
     border-radius: $input-radius;
     padding: 6px 9px;
@@ -51,8 +69,8 @@
     }
 
     &.contactButton {
-      background-color: $text-color;
-      color: $background-color;
+      background-color: var(--background-color-inverse);
+      color: var(--text-color-inverse);
       transition:
         background-color 0.3s ease,
         color 0.3s ease,
@@ -63,8 +81,12 @@
       @media (hover: hover) and (pointer: fine) {
         &:hover {
           transform: scale(1.05);
-          background-color: color.adjust($color: $text-color, $lightness: 5%);
-          filter: $div-shadow;
+          background-color: color-mix(
+            in srgb,
+            var(--background-color-inverse) 95%,
+            white
+          );
+          filter: var(--div-shadow);
 
           @media (prefers-reduced-motion: reduce) {
             transform: none;
@@ -108,8 +130,8 @@
 
     .skipNavigation {
       opacity: 0;
-      color: $background-color;
-      background-color: $text-color;
+      color: var(--text-color-inverse);
+      background-color: var(--background-color-inverse);
       border-radius: $input-radius;
       padding: 6px 9px;
       pointer-events: none;
@@ -133,7 +155,7 @@
       display: none;
       position: relative;
       border-radius: 8px;
-      border: 4px solid $text-color;
+      border: 4px solid var(--background-color-inverse);
       width: 30px;
       height: 30px;
       margin-top: 5px;
@@ -149,7 +171,7 @@
         width: 30%;
         height: 100%;
         background-color: transparent;
-        border-left: 4px solid $text-color;
+        border-left: 4px solid var(--background-color-inverse);
         right: 0;
         top: 0;
       }
@@ -163,19 +185,19 @@
         transform: translateY(-50%) rotate(45deg);
         width: 6px;
         height: 6px;
-        border-left: 3px solid $text-color;
-        border-bottom: 3px solid $text-color;
+        border-left: 3px solid var(--background-color-inverse);
+        border-bottom: 3px solid var(--background-color-inverse);
       }
 
       &.open {
         // Sidebar line
         &::before {
-          background-color: $text-color;
+          background-color: var(--background-color-inverse);
         }
         // Close arrow
         &::after {
           right: 2.5px;
-          border-color: $foreground-color;
+          border-color: var(--primary-color);
           transform: translateY(-50%) rotate(225deg);
         }
       }
@@ -185,15 +207,15 @@
           &,
           &::before,
           &::after {
-            border-color: $background-color;
+            border-color: var(--text-color-inverse);
           }
 
           &.open::before {
-            background-color: $background-color;
+            background-color: var(--text-color-inverse);
           }
 
           &.open::after {
-            border-color: $foreground-color;
+            border-color: var(--primary-color);
           }
         }
       }
@@ -209,19 +231,30 @@
   }
 }
 
-@keyframes wobble {
-  0%,
-  100% {
-    transform: rotate(-0.5deg);
-  }
-  25% {
-    transform: rotate(-0.8deg) translateX(1px);
-  }
-  50% {
-    transform: rotate(-0.2deg) translateX(-1px);
-  }
-  75% {
-    transform: rotate(-0.7deg) translateX(0.5px);
+// @keyframes wobble {
+//   0%,
+//   100% {
+//     transform: rotate(-0.5deg);
+//   }
+//   25% {
+//     transform: rotate(-0.8deg) translateX(1px);
+//   }
+//   50% {
+//     transform: rotate(-0.2deg) translateX(-1px);
+//   }
+//   75% {
+//     transform: rotate(-0.7deg) translateX(0.5px);
+//   }
+// }
+
+.themeToggle {
+  height: 37px;
+  aspect-ratio: 1;
+  padding: 5px;
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -235,7 +268,7 @@
   height: 100vh;
   z-index: -1;
   padding-top: calc($header-height + 15px);
-  background-color: $foreground-color;
+  background-color: var(--primary-color);
   transition:
     right 0.3s ease,
     box-shadow 0.3s ease;

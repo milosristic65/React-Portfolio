@@ -2,7 +2,13 @@
 @use "sass:color";
 
 $projectTitleFontSize: 22px;
+
+:global(.dark) .projectCard {
+  color: var(--text-color-inverse);
+}
+
 .projectCard {
+  color: var(--text-color);
   position: relative;
   border-radius: $input-radius;
   overflow: hidden;
@@ -55,7 +61,11 @@ $projectTitleFontSize: 22px;
       position: absolute;
       inset: -10px;
       top: -5px;
-      background-color: rgba($foreground-color, 0.9);
+      background-color: color-mix(
+        in srgb,
+        var(--primary-color) 90%,
+        transparent
+      );
       transform: rotate(-2deg);
       transition: background-color 0.3s ease;
     }
@@ -85,7 +95,7 @@ $projectTitleFontSize: 22px;
       }
 
       &::before {
-        background-color: rgba($foreground-color, 1);
+        background-color: --primary-color;
       }
     }
 

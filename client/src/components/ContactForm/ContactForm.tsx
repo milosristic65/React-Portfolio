@@ -1,12 +1,14 @@
 import style from "./ContactForm.module.scss";
 import React, { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Theme } from "../../enums/theme";
 
 interface ContactFormProps {
   className?: string | string[];
+  theme?: Theme;
 }
 
-export const ContactForm = ({ className }: ContactFormProps) => {
+export const ContactForm = ({ className, theme }: ContactFormProps) => {
   const classes = ["contactForm"];
 
   if (className) {
@@ -122,9 +124,11 @@ export const ContactForm = ({ className }: ContactFormProps) => {
       />
       <div className={style.submitSection}>
         <ReCAPTCHA
+          key={theme}
           ref={recaptchaRef}
           sitekey={recaptchaSiteKey}
           size={recaptchaSize}
+          theme={theme === Theme.Dark ? "dark" : "light"}
           onChange={onVerify}
           asyncScriptOnLoad={() => {
             setIsRecaptchaLoaded(true);

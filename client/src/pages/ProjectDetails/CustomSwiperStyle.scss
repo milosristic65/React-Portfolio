@@ -9,15 +9,15 @@
 
   .swiper-button-next,
   .swiper-button-prev {
-    color: $foreground-color;
+    color: var(--primary-color);
   }
 
   .swiper-pagination-bullet {
-    background: $background-color;
+    background: var(--background-color);
     border-radius: $input-radius;
   }
   .swiper-pagination-bullet-active {
-    background: $foreground-color;
+    background: var(--primary-color);
   }
 
   button {
@@ -47,14 +47,14 @@
   margin-top: 5px;
 
   .swiper-pagination-bullet {
-    background: $text-color;
+    background: var(--background-color-inverse);
     width: 10px;
     height: 10px;
     border-radius: 50%;
     margin: 0 4px;
     opacity: 0.2;
     &.swiper-pagination-bullet-active {
-      background: $foreground-color;
+      background: var(--primary-color);
       opacity: 1;
     }
   }

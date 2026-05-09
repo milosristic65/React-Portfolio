@@ -8,8 +8,8 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: $background-color;
-  color: $text-color;
+  background-color: var(--background-color);
+  color: var(--text-color);
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -29,14 +29,14 @@ main {
 }
 
 a {
-  color: $foreground-color;
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      color: color.adjust($color: $foreground-color, $lightness: -20%);
+      color: color-mix(in srgb, var(--primary-color) 80%, black);
     }
   }
 }
@@ -80,7 +80,7 @@ a {
 }
 
 .highlight {
-  color: $foreground-color;
+  color: var(--primary-color);
   font-weight: bold;
 }
 
@@ -88,8 +88,8 @@ button,
 .buttonLink {
   display: inline-block;
   padding: 10px 16px;
-  background-color: $foreground-color;
-  color: $background-color;
+  background-color: var(--primary-color);
+  color: var(--text-color-inverse);
   border-radius: $input-radius;
   cursor: pointer;
   border: none;
@@ -105,7 +105,7 @@ button,
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      background-color: color.adjust($color: $foreground-color, $lightness: -15%);
+      background-color: color-mix(in srgb, var(--primary-color) 75%, black);
     }
   }
 }

@@ -5,12 +5,14 @@ import { useState, useEffect } from "react";
 import slugify from "slugify";
 import { ROUTES } from "../../config/routes";
 import { Link } from "react-router";
+import { Theme } from "../../enums/theme.ts";
 
 import { type Project } from "../../types/project";
 
 interface ExperienceCardProps {
   title: string;
   logo: string;
+  logoDark: string;
   position: string;
   // duration: {
   //   start: Date;
@@ -18,15 +20,18 @@ interface ExperienceCardProps {
   // };
   url?: string;
   relatedProjects?: string[];
+  theme?: Theme;
 }
 
 const ExperienceCard = ({
   title,
   logo,
+  logoDark,
   url,
   position,
   // duration,
   relatedProjects,
+  theme,
 }: ExperienceCardProps) => {
   const apiUrl = import.meta.env.VITE_API_URL || "";
 
@@ -69,7 +74,10 @@ const ExperienceCard = ({
     <div className={styles.experienceCard}>
       <div className={styles.logo}>
         <a href={url} target="_blank">
-          <img src={`${apiUrl}/api/assets/${logo}`} title={title} />
+          <img
+            src={`${apiUrl}/api/assets/${theme === Theme.Dark ? logoDark : logo}`}
+            title={title}
+          />
         </a>
       </div>
       <div className={styles.cardContent}>

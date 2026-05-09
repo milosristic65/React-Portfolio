@@ -1,17 +1,42 @@
-// Colors
-$foreground-color: #65ccb8;
-$background-color: #f2f2f2;
-$text-color: #182a2f;
-$accent-color: white;
-$muted-text: #868686;
-$error-color: #c0392b;
+:root {
+  // Theme colors
+  --primary-color: #65ccb8;
+  --background-color: #f2f2f2;
+  --background-color-inverse: #182a2f;
+  --text-color: #182a2f;
+  --text-color-inverse: #f2f2f2;
+  --accent-color: #ffffff;
+  --muted-text: #868686;
+  --error-color: #c0392b;
+  --color-banner: #182a2f;
+  --color-banner-foreground: #f2f2f2;
 
-// Effects
-$div-shadow: drop-shadow(0 0 10px rgba(7, 45, 216, 0.8))
-  drop-shadow(0 0 20px rgba(108, 9, 238, 0.4));
-$natural-box-shadow:
-  0 5px 10px rgba(154, 160, 185, 0.05),
-  0 15px 40px rgba(166, 173, 201, 0.2);
+  // Drop-shadows
+  --div-shadow: drop-shadow(0 0 10px rgba(7, 45, 216, 0.8))
+    drop-shadow(0 0 20px rgba(108, 9, 238, 0.4));
+  --natural-box-shadow:
+    0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+  --light-box-shadow: 0 2px 64px rgba(35, 6, 202, 0.445);
+}
+
+[data-theme="dark"] {
+  // Theme colors
+  --primary-color: #5ab89f;
+  --background-color: #0a0f13;
+  --background-color-inverse: #f2f2f2;
+  --text-color: #f2f2f2;
+  --text-color-inverse: #182a2f;
+  --accent-color: #182228;
+  --muted-text: #868686;
+  --error-color: #c0392b;
+  --color-banner: #0a0f13;
+  --color-banner-foreground: #f2f2f2;
+
+  // Drop-shadows
+  --div-shadow: none;
+  --natural-box-shadow: none;
+  --light-box-shadow: 0 4px 48px rgba(234, 246, 255, 0.7);
+}
 
 // Structure
 $content-width: 1280px;

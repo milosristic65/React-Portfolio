@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ROUTES } from "../../config/routes";
+import { Theme } from "../../enums/theme";
 
 import logo from "/logo.svg";
 
-const Header = () => {
+type HeaderProps = {
+  theme: Theme;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+};
+
+const Header: React.FC<HeaderProps> = ({ theme, setTheme }) => {
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -86,6 +92,22 @@ const Header = () => {
             Get in Contact
           </Link>
         </nav>
+
+        <button
+          className={styles.themeToggle}
+          aria-label="Toggle theme"
+          onClick={() =>
+            setTheme((prev) =>
+              prev === Theme.Light ? Theme.Dark : Theme.Light,
+            )
+          }
+        >
+          {theme === Theme.Light ? (
+            <img src="/fontawesome/moon-solid-full.svg" alt="Dark mode" />
+          ) : (
+            <img src="/fontawesome/sun-solid-full.svg" alt="Light mode" />
+          )}
+        </button>
 
         <div
           className={`${styles.sidebarToggle} ${

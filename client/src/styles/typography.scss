@@ -57,7 +57,7 @@ p {
 
 // Links
 a {
-  color: $foreground-color;
+  color: var(--primary-color);
   text-decoration: none;
 }
 
